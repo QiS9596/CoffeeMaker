@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2020-06-28T19:29:44" hostname="DESKTOP-J83E7LJ" time="0.005">
+<testsuite name="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2020-06-28T20:26:28" hostname="DESKTOP-J83E7LJ" time="0.004">
   <properties/>
-  <testcase name="testAddReceipe_correct2" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.003"/>
+  <testcase name="testAddReceipe_correct2" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.002"/>
   <testcase name="testAddReceipe_overflow1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
   <testcase name="testAddInventory_boundaryIntOverflow1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
-  <testcase name="testMakeCoffee" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
-  <testcase name="testAddInventory_exception1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.001"/>
+  <testcase name="testMakeCoffee" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.001"/>
+  <testcase name="testAddInventory_exception1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
   <testcase name="testAddInventory_exception2" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
   <testcase name="testAddInventory_correct1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
   <testcase name="testAddInventory_correct2" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>

@@ -5,7 +5,8 @@ public class RecipeBook {
 	/** Array of recipes in coffee maker*/
 	private Recipe [] recipeArray;
 	/** Number of recipes in coffee maker */
-	private final int NUM_RECIPES = 4; 
+	//ERR->GOLDEN : 4->3
+	private final int NUM_RECIPES = 3;
 	
 	/**
 	 * Default constructor for a RecipeBook.
@@ -57,7 +58,7 @@ public class RecipeBook {
 	public synchronized String deleteRecipe(int recipeToDelete) {
 		if (recipeArray[recipeToDelete] != null) {
 			String recipeName = recipeArray[recipeToDelete].getName();
-			recipeArray[recipeToDelete] = new Recipe();
+			recipeArray[recipeToDelete] = null;
 			return recipeName;
 		} else {
 			return null;
