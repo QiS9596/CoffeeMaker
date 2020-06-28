@@ -173,7 +173,7 @@ public class CoffeeMakerTest {
 	}
 
 
-	private synchronized Recipe[] getRecipes_helper(CoffeeMaker cm) throws NoSuchFieldException, IllegalAccessException{
+	private synchronized Recipe[] getRecipes_helper(CoffeeMaker cm) throws NoSuchFieldException, IllegalAccessException {
 		Field recipeBook_field = CoffeeMaker.class.getDeclaredField("recipeBook");
 		recipeBook_field.setAccessible(true);
 		RecipeBook recipeBook = (RecipeBook) recipeBook_field.get(cm);
@@ -183,8 +183,8 @@ public class CoffeeMakerTest {
 	/**
 	 * Compare the ingredient of two recipe, they may have different name, but if all four ingredient attribute matches
 	 * return true
-	 * */
-	private boolean compareRecipeIngredient_helper(Recipe r1, Recipe r2){
+	 */
+	private boolean compareRecipeIngredient_helper(Recipe r1, Recipe r2) {
 		return (r1.getAmtChocolate() == r2.getAmtChocolate()) &&
 				(r1.getAmtCoffee() == r2.getAmtCoffee()) &&
 				(r1.getAmtMilk() == r2.getAmtMilk()) &&
@@ -307,6 +307,8 @@ public class CoffeeMakerTest {
 
 	}
 
+
+
 	/**
 	 * Given a coffee maker with the default inventory
 	 * When we add inventory with malformed quantities (i.e., a negative
@@ -340,6 +342,35 @@ public class CoffeeMakerTest {
 		}
 
 	}
+	// for coverage
+	@Test(expected = InventoryException.class)
+	public void testAddInventory_exception3() throws InventoryException {
+		coffeeMaker.addInventory("-14", "-1", "asdf", "3");
+	}
+	@Test(expected = InventoryException.class)
+	public void testAddInventory_exception4() throws InventoryException {
+		coffeeMaker.addInventory("2", "123kl", "asdf", "3");
+	}
+
+	@Test(expected = InventoryException.class)
+	public void testAddInventory_exception5() throws InventoryException {
+		coffeeMaker.addInventory("2", "4", "asdf", "3");
+	}
+
+	@Test(expected = InventoryException.class)
+	public void testAddInventory_exception6() throws InventoryException {
+		coffeeMaker.addInventory("2", "4", "-33", "3");
+	}
+
+	@Test(expected = InventoryException.class)
+	public void testAddInventory_exception7() throws InventoryException {
+		coffeeMaker.addInventory("2", "4", "2", "-3");
+	}
+
+	@Test(expected = InventoryException.class)
+	public void testAddInventory_exception8() throws InventoryException {
+		coffeeMaker.addInventory("2", "4", "2", "tjoikl");
+	}
 	// end testing addInventory
 	/*--------------------------------------------------------------------------------------------------------------------*/
 	// start testing addRecipe
@@ -349,7 +380,7 @@ public class CoffeeMakerTest {
 	 * check if the remaining recipe slots are set to null
 	 */
 	@Test
-	public void testAddRecipe_correct1() throws NoSuchFieldException, IllegalAccessException{
+	public void testAddRecipe_correct1() throws NoSuchFieldException, IllegalAccessException {
 		boolean add = coffeeMaker.addRecipe(recipe1);
 		assertTrue(add);
 		Recipe[] recipes = getRecipes_helper(coffeeMaker);
@@ -365,7 +396,7 @@ public class CoffeeMakerTest {
 	 * check if they are in order
 	 */
 	@Test
-	public void testAddReceipe_correct2() throws NoSuchFieldException, IllegalAccessException{
+	public void testAddReceipe_correct2() throws NoSuchFieldException, IllegalAccessException {
 		boolean add4 = coffeeMaker.addRecipe(recipe4);
 		boolean add2 = coffeeMaker.addRecipe(recipe2);
 
@@ -384,7 +415,7 @@ public class CoffeeMakerTest {
 	 * test addReceipe, add more than three recipes
 	 */
 	@Test
-	public void testAddReceipe_overflow1() throws NoSuchFieldException, IllegalAccessException{
+	public void testAddReceipe_overflow1() throws NoSuchFieldException, IllegalAccessException {
 		boolean add3 = coffeeMaker.addRecipe(recipe3);
 		boolean add1 = coffeeMaker.addRecipe(recipe1);
 		boolean add2 = coffeeMaker.addRecipe(recipe2);
@@ -407,7 +438,7 @@ public class CoffeeMakerTest {
 	 * test addRecipe, add duplicated recipes
 	 */
 	@Test
-	public void testAddRecipe_duplicated1() throws NoSuchFieldException, IllegalAccessException{
+	public void testAddRecipe_duplicated1() throws NoSuchFieldException, IllegalAccessException {
 		boolean add1_1 = coffeeMaker.addRecipe(recipe1);
 		boolean add1_2 = coffeeMaker.addRecipe(recipe1);
 
@@ -432,7 +463,7 @@ public class CoffeeMakerTest {
 	 * test deleteRecipe method, for a simplest test case, just add one recipe and delete it.
 	 */
 	@Test
-	public void testDeleteRecipe_correct1() throws NoSuchFieldException, IllegalAccessException{
+	public void testDeleteRecipe_correct1() throws NoSuchFieldException, IllegalAccessException {
 		add_recipe_helper(coffeeMaker, recipe1);
 
 		Recipe[] recipes = getRecipes_helper(coffeeMaker);
@@ -457,7 +488,7 @@ public class CoffeeMakerTest {
 	 * add multiple recipes then delete one of them
 	 */
 	@Test
-	public void testDeleteRecipe_correct2() throws NoSuchFieldException, IllegalAccessException{
+	public void testDeleteRecipe_correct2() throws NoSuchFieldException, IllegalAccessException {
 		add_recipe_helper(coffeeMaker, recipe1);
 		add_recipe_helper(coffeeMaker, recipe4);
 
@@ -477,11 +508,12 @@ public class CoffeeMakerTest {
 		assertEquals(recipe4, recipes[1]);
 		assertNull(recipes[2]);
 	}
+
 	/**
 	 * delete a recipe multiple times
 	 */
 	@Test
-	public void testDeleteRecipe_redelete1() throws NoSuchFieldException, IllegalAccessException{
+	public void testDeleteRecipe_redelete1() throws NoSuchFieldException, IllegalAccessException {
 		add_recipe_helper(coffeeMaker, recipe1);
 		add_recipe_helper(coffeeMaker, recipe4);
 
@@ -516,7 +548,7 @@ public class CoffeeMakerTest {
 	 * delete a recipe multiple times
 	 */
 	@Test
-	public void testDeleteRecipe_deleteNull1() throws NoSuchFieldException, IllegalAccessException{
+	public void testDeleteRecipe_deleteNull1() throws NoSuchFieldException, IllegalAccessException {
 		add_recipe_helper(coffeeMaker, recipe1);
 		add_recipe_helper(coffeeMaker, recipe4);
 
@@ -540,10 +572,12 @@ public class CoffeeMakerTest {
 	// end testing deleteRecipe
 	/*--------------------------------------------------------------------------------------------------------------------*/
 	// start testing editRecipe
+
 	/**
-	 * A simplest test case for adding one recipe then edit it*/
+	 * A simplest test case for adding one recipe then edit it
+	 */
 	@Test
-	public void testEditRecipe_correct1() throws NoSuchFieldException, IllegalAccessException{
+	public void testEditRecipe_correct1() throws NoSuchFieldException, IllegalAccessException {
 		add_recipe_helper(coffeeMaker, recipe1);
 		Recipe[] recipes = getRecipes_helper(coffeeMaker);
 		assertEquals(3, recipes.length);
@@ -563,10 +597,12 @@ public class CoffeeMakerTest {
 		assertNull(recipes[1]);
 		assertNull(recipes[2]);
 	}
+
 	/**
-	 * edit same recipe multiple time*/
+	 * edit same recipe multiple time
+	 */
 	@Test
-	public void testEditRecipe_correct2() throws NoSuchFieldException, IllegalAccessException{
+	public void testEditRecipe_correct2() throws NoSuchFieldException, IllegalAccessException {
 		add_recipe_helper(coffeeMaker, recipe1);
 		Recipe[] recipes = getRecipes_helper(coffeeMaker);
 		assertEquals(3, recipes.length);
@@ -596,10 +632,12 @@ public class CoffeeMakerTest {
 		assertNull(recipes[1]);
 		assertNull(recipes[2]);
 	}
+
 	/**
-	 * edit a recipe to it's own replication*/
+	 * edit a recipe to it's own replication
+	 */
 	@Test
-	public void testEditRecipe_correct3() throws NoSuchFieldException, IllegalAccessException{
+	public void testEditRecipe_correct3() throws NoSuchFieldException, IllegalAccessException {
 		add_recipe_helper(coffeeMaker, recipe4);
 		Recipe[] recipes = getRecipes_helper(coffeeMaker);
 		assertEquals(3, recipes.length);
@@ -618,10 +656,12 @@ public class CoffeeMakerTest {
 		assertNull(recipes[1]);
 		assertNull(recipes[2]);
 	}
+
 	/**
-	 * edit a recipe to null*/
+	 * edit a recipe to null
+	 */
 	@Test(expected = NullPointerException.class)
-	public void testEditRecipe_editToNull1() throws NoSuchFieldException, IllegalAccessException{
+	public void testEditRecipe_editToNull1() throws NoSuchFieldException, IllegalAccessException {
 		add_recipe_helper(coffeeMaker, recipe4);
 		Recipe[] recipes = getRecipes_helper(coffeeMaker);
 		assertEquals(3, recipes.length);
@@ -630,11 +670,12 @@ public class CoffeeMakerTest {
 		assertNull(recipes[2]);
 		String newRecipeName = coffeeMaker.editRecipe(0, null);
 	}
+
 	/**
 	 * edit an uninitialized recipe
-	 * */
+	 */
 	@Test
-	public void testEditRecipe_editUnInit1() throws NoSuchFieldException, IllegalAccessException{
+	public void testEditRecipe_editUnInit1() throws NoSuchFieldException, IllegalAccessException {
 		add_recipe_helper(coffeeMaker, recipe4);
 		add_recipe_helper(coffeeMaker, recipe1);
 		Recipe[] recipes = getRecipes_helper(coffeeMaker);
@@ -654,11 +695,12 @@ public class CoffeeMakerTest {
 		assertEquals(recipe1, recipes[1]);
 		assertNull(recipes[2]);
 	}
+
 	/**
 	 * edit an out of boundary recipe slot: <0
-	 * */
+	 */
 	@Test
-	public void testEditRecipe_editOutOfBoundary1() throws NoSuchFieldException, IllegalAccessException{
+	public void testEditRecipe_editOutOfBoundary1() throws NoSuchFieldException, IllegalAccessException {
 		add_recipe_helper(coffeeMaker, recipe4);
 		add_recipe_helper(coffeeMaker, recipe1);
 		Recipe[] recipes = getRecipes_helper(coffeeMaker);
@@ -681,9 +723,9 @@ public class CoffeeMakerTest {
 
 	/**
 	 * edit an out of boundary recipe slot: greater than array length
-	 * */
+	 */
 	@Test
-	public void testEditRecipe_editOutOfBoundary2() throws NoSuchFieldException, IllegalAccessException{
+	public void testEditRecipe_editOutOfBoundary2() throws NoSuchFieldException, IllegalAccessException {
 		add_recipe_helper(coffeeMaker, recipe4);
 		add_recipe_helper(coffeeMaker, recipe1);
 		Recipe[] recipes = getRecipes_helper(coffeeMaker);
@@ -705,6 +747,7 @@ public class CoffeeMakerTest {
 	}
 	// end testing editRecipe
 	/*--------------------------------------------------------------------------------------------------------------------*/
+
 	/**
 	 * Given a coffee maker with one valid recipe
 	 * When we make coffee, selecting the valid recipe and paying more than

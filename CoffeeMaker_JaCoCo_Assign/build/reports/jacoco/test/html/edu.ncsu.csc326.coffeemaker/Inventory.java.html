@@ -56,13 +56,13 @@ public class Inventory {
 <span class="fc" id="L56">    	int amtChocolate = 0;</span>
     	try {
 <span class="fc" id="L58">    		amtChocolate = Integer.parseInt(chocolate);</span>
-<span class="nc" id="L59">    	} catch (NumberFormatException e) {</span>
-<span class="nc" id="L60">    		throw new InventoryException(&quot;Units of chocolate must be a positive integer&quot;);</span>
+<span class="fc" id="L59">    	} catch (NumberFormatException e) {</span>
+<span class="fc" id="L60">    		throw new InventoryException(&quot;Units of chocolate must be a positive integer&quot;);</span>
 <span class="fc" id="L61">    	}</span>
-<span class="pc bpc" id="L62" title="1 of 2 branches missed.">		if (amtChocolate &gt;= 0) {</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">		if (amtChocolate &gt;= 0) {</span>
 <span class="fc" id="L63">			Inventory.chocolate += amtChocolate;</span>
 		} else {
-<span class="nc" id="L65">			throw new InventoryException(&quot;Units of chocolate must be a positive integer&quot;);</span>
+<span class="fc" id="L65">			throw new InventoryException(&quot;Units of chocolate must be a positive integer&quot;);</span>
 		}
 <span class="fc" id="L67">    }</span>
     
@@ -99,10 +99,10 @@ public class Inventory {
 <span class="fc" id="L99">    	} catch (NumberFormatException e) {</span>
 <span class="fc" id="L100">    		throw new InventoryException(&quot;Units of coffee must be a positive integer&quot;);</span>
 <span class="fc" id="L101">    	}</span>
-<span class="pc bpc" id="L102" title="1 of 2 branches missed.">		if (amtCoffee &gt;= 0) {</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">		if (amtCoffee &gt;= 0) {</span>
 <span class="fc" id="L103">			Inventory.coffee += amtCoffee;</span>
 		} else {
-<span class="nc" id="L105">			throw new InventoryException(&quot;Units of coffee must be a positive integer&quot;);</span>
+<span class="fc" id="L105">			throw new InventoryException(&quot;Units of coffee must be a positive integer&quot;);</span>
 		}
 <span class="fc" id="L107">    }</span>
     
@@ -136,8 +136,8 @@ public class Inventory {
 <span class="fc" id="L136">    	int amtMilk = 0;</span>
     	try {
 <span class="fc" id="L138">    		amtMilk = Integer.parseInt(milk);</span>
-<span class="nc" id="L139">    	} catch (NumberFormatException e) {</span>
-<span class="nc" id="L140">    		throw new InventoryException(&quot;Units of milk must be a positive integer&quot;);</span>
+<span class="fc" id="L139">    	} catch (NumberFormatException e) {</span>
+<span class="fc" id="L140">    		throw new InventoryException(&quot;Units of milk must be a positive integer&quot;);</span>
 <span class="fc" id="L141">    	}</span>
 <span class="fc bfc" id="L142" title="All 2 branches covered.">		if (amtMilk &gt;= 0) {</span>
 <span class="fc" id="L143">			Inventory.milk += amtMilk;</span>
@@ -176,14 +176,14 @@ public class Inventory {
 <span class="fc" id="L176">    	int amtSugar = 0;</span>
     	try {
 <span class="fc" id="L178">    		amtSugar = Integer.parseInt(sugar);</span>
-<span class="nc" id="L179">    	} catch (NumberFormatException e) {</span>
-<span class="nc" id="L180">    		throw new InventoryException(&quot;Units of sugar must be a positive integer&quot;);</span>
+<span class="fc" id="L179">    	} catch (NumberFormatException e) {</span>
+<span class="fc" id="L180">    		throw new InventoryException(&quot;Units of sugar must be a positive integer&quot;);</span>
 <span class="fc" id="L181">    	}</span>
     	//ERR-&gt;GOLDEN: '&lt;=' -&gt; '&gt;='
-<span class="pc bpc" id="L183" title="1 of 2 branches missed.">		if (amtSugar &gt;= 0) {</span>
+<span class="fc bfc" id="L183" title="All 2 branches covered.">		if (amtSugar &gt;= 0) {</span>
 <span class="fc" id="L184">			Inventory.sugar += amtSugar;</span>
 		} else {
-<span class="nc" id="L186">			throw new InventoryException(&quot;Units of sugar must be a positive integer&quot;);</span>
+<span class="fc" id="L186">			throw new InventoryException(&quot;Units of sugar must be a positive integer&quot;);</span>
 		}
 <span class="fc" id="L188">    }</span>
     
