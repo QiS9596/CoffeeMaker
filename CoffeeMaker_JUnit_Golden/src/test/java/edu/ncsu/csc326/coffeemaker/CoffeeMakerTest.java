@@ -50,6 +50,13 @@ public class CoffeeMakerTest {
     private Recipe recipe3;
     private Recipe recipe4;
 
+    // golden replicas of recipes, since edit recipe would change the object
+    // for we cant access to the Recipe.java, we will have to handcraft copy here
+    private Recipe recipe1_g;
+    private Recipe recipe2_g;
+    private Recipe recipe3_g;
+    private Recipe recipe4_g;
+
     /**
      * Initializes some recipes to test with and the {@link CoffeeMaker}
      * object we wish to test.
@@ -70,6 +77,15 @@ public class CoffeeMakerTest {
         recipe1.setAmtSugar("1");
         recipe1.setPrice("50");
 
+        recipe1_g = new Recipe();
+        recipe1_g.setName("Coffee");
+        recipe1_g.setAmtChocolate("0");
+        recipe1_g.setAmtCoffee("3");
+        recipe1_g.setAmtMilk("1");
+        recipe1_g.setAmtSugar("1");
+        recipe1_g.setPrice("50");
+
+
         //Set up for r2
         recipe2 = new Recipe();
         recipe2.setName("Mocha");
@@ -78,6 +94,14 @@ public class CoffeeMakerTest {
         recipe2.setAmtMilk("1");
         recipe2.setAmtSugar("1");
         recipe2.setPrice("75");
+
+        recipe2_g = new Recipe();
+        recipe2_g.setName("Mocha");
+        recipe2_g.setAmtChocolate("20");
+        recipe2_g.setAmtCoffee("3");
+        recipe2_g.setAmtMilk("1");
+        recipe2_g.setAmtSugar("1");
+        recipe2_g.setPrice("75");
 
         //Set up for r3
         recipe3 = new Recipe();
@@ -88,6 +112,14 @@ public class CoffeeMakerTest {
         recipe3.setAmtSugar("1");
         recipe3.setPrice("100");
 
+        recipe3_g = new Recipe();
+        recipe3_g.setName("Latte");
+        recipe3_g.setAmtChocolate("0");
+        recipe3_g.setAmtCoffee("3");
+        recipe3_g.setAmtMilk("3");
+        recipe3_g.setAmtSugar("1");
+        recipe3_g.setPrice("100");
+
         //Set up for r4
         recipe4 = new Recipe();
         recipe4.setName("Hot Chocolate");
@@ -96,6 +128,14 @@ public class CoffeeMakerTest {
         recipe4.setAmtMilk("1");
         recipe4.setAmtSugar("1");
         recipe4.setPrice("65");
+
+        recipe4_g = new Recipe();
+        recipe4_g.setName("Hot Chocolate");
+        recipe4_g.setAmtChocolate("4");
+        recipe4_g.setAmtCoffee("0");
+        recipe4_g.setAmtMilk("1");
+        recipe4_g.setAmtSugar("1");
+        recipe4_g.setPrice("65");
     }
 
     /**
@@ -138,6 +178,17 @@ public class CoffeeMakerTest {
         recipeBook_field.setAccessible(true);
         RecipeBook recipeBook = (RecipeBook) recipeBook_field.get(cm);
         return recipeBook.getRecipes();
+    }
+
+    /**
+     * Compare the ingredient of two recipe, they may have different name, but if all four ingredient attribute matches
+     * return true
+     * */
+    private boolean compareRecipeIngredient_helper(Recipe r1, Recipe r2){
+        return (r1.getAmtChocolate() == r2.getAmtChocolate()) &&
+                (r1.getAmtCoffee() == r2.getAmtCoffee()) &&
+                (r1.getAmtMilk() == r2.getAmtMilk()) &&
+                (r1.getAmtSugar() == r2.getAmtSugar());
     }
     /*--------------------------------------------------------------------------------------------------------------------*/
     //testing add inventory method
@@ -403,10 +454,257 @@ public class CoffeeMakerTest {
     }
 
     /**
+     * add multiple recipes then delete one of them
      */
+    @Test
+    public void testDeleteRecipe_correct2() throws NoSuchFieldException, IllegalAccessException{
+        add_recipe_helper(coffeeMaker, recipe1);
+        add_recipe_helper(coffeeMaker, recipe4);
+
+        Recipe[] recipes = getRecipes_helper(coffeeMaker);
+        assertEquals(3, recipes.length);
+        assertEquals(recipe1, recipes[0]);
+        assertEquals(recipe4, recipes[1]);
+        assertNull(recipes[2]);
+
+        String deletedRecipeName = coffeeMaker.deleteRecipe(0);
+        assertEquals(recipe1.getName(), deletedRecipeName);
+
+        recipes = getRecipes_helper(coffeeMaker);
+
+        assertEquals(3, recipes.length);
+        assertNull(recipes[0]);
+        assertEquals(recipe4, recipes[1]);
+        assertNull(recipes[2]);
+    }
+    /**
+     * delete a recipe multiple times
+     */
+    @Test
+    public void testDeleteRecipe_redelete1() throws NoSuchFieldException, IllegalAccessException{
+        add_recipe_helper(coffeeMaker, recipe1);
+        add_recipe_helper(coffeeMaker, recipe4);
+
+        Recipe[] recipes = getRecipes_helper(coffeeMaker);
+        assertEquals(3, recipes.length);
+        assertEquals(recipe1, recipes[0]);
+        assertEquals(recipe4, recipes[1]);
+        assertNull(recipes[2]);
+
+        String deletedRecipeName = coffeeMaker.deleteRecipe(0);
+        assertEquals(recipe1.getName(), deletedRecipeName);
+
+        recipes = getRecipes_helper(coffeeMaker);
+
+        assertEquals(3, recipes.length);
+        assertNull(recipes[0]);
+        assertEquals(recipe4, recipes[1]);
+        assertNull(recipes[2]);
+
+        deletedRecipeName = coffeeMaker.deleteRecipe(0);
+        assertNull(deletedRecipeName);
+
+        recipes = getRecipes_helper(coffeeMaker);
+
+        assertEquals(3, recipes.length);
+        assertNull(recipes[0]);
+        assertEquals(recipe4, recipes[1]);
+        assertNull(recipes[2]);
+    }
+
+    /**
+     * delete a recipe multiple times
+     */
+    @Test
+    public void testDeleteRecipe_deleteNull1() throws NoSuchFieldException, IllegalAccessException{
+        add_recipe_helper(coffeeMaker, recipe1);
+        add_recipe_helper(coffeeMaker, recipe4);
+
+        Recipe[] recipes = getRecipes_helper(coffeeMaker);
+        assertEquals(3, recipes.length);
+        assertEquals(recipe1, recipes[0]);
+        assertEquals(recipe4, recipes[1]);
+        assertNull(recipes[2]);
+
+        String deletedRecipeName = coffeeMaker.deleteRecipe(2);
+        assertNull(deletedRecipeName);
+
+        recipes = getRecipes_helper(coffeeMaker);
+
+        assertEquals(3, recipes.length);
+        assertEquals(recipe1, recipes[0]);
+        assertEquals(recipe4, recipes[1]);
+        assertNull(recipes[2]);
+
+    }
     // end testing deleteRecipe
     /*--------------------------------------------------------------------------------------------------------------------*/
+    // start testing editRecipe
+    /**
+     * A simplest test case for adding one recipe then edit it*/
+    @Test
+    public void testEditRecipe_correct1() throws NoSuchFieldException, IllegalAccessException{
+        add_recipe_helper(coffeeMaker, recipe1);
+        Recipe[] recipes = getRecipes_helper(coffeeMaker);
+        assertEquals(3, recipes.length);
+        assertEquals(recipe1, recipes[0]);
+        assertNull(recipes[1]);
+        assertNull(recipes[2]);
 
+        String newRecipeName = coffeeMaker.editRecipe(0, recipe2);
+        // the method should return the name of the recipe, which should be the same with the old one
+        assertEquals(recipe1_g.getName(), newRecipeName);
+
+        recipes = getRecipes_helper(coffeeMaker);
+
+        assertEquals(3, recipes.length);
+
+        assertTrue(compareRecipeIngredient_helper(recipe2_g, recipes[0]));
+        assertNull(recipes[1]);
+        assertNull(recipes[2]);
+    }
+    /**
+     * edit same recipe multiple time*/
+    @Test
+    public void testEditRecipe_correct2() throws NoSuchFieldException, IllegalAccessException{
+        add_recipe_helper(coffeeMaker, recipe1);
+        Recipe[] recipes = getRecipes_helper(coffeeMaker);
+        assertEquals(3, recipes.length);
+        assertEquals(recipe1, recipes[0]);
+        assertNull(recipes[1]);
+        assertNull(recipes[2]);
+        //edit first time
+        String newRecipeName = coffeeMaker.editRecipe(0, recipe2);
+
+        assertEquals(recipe1_g.getName(), newRecipeName);
+
+        recipes = getRecipes_helper(coffeeMaker);
+
+        assertEquals(3, recipes.length);
+        assertTrue(compareRecipeIngredient_helper(recipe2_g, recipes[0]));
+        assertNull(recipes[1]);
+        assertNull(recipes[2]);
+        //edit second time
+        newRecipeName = coffeeMaker.editRecipe(0, recipe4);
+
+        assertEquals(recipe1_g.getName(), newRecipeName);
+
+        recipes = getRecipes_helper(coffeeMaker);
+
+        assertEquals(3, recipes.length);
+        assertTrue(compareRecipeIngredient_helper(recipe4_g, recipes[0]));
+        assertNull(recipes[1]);
+        assertNull(recipes[2]);
+    }
+    /**
+     * edit a recipe to it's own replication*/
+    @Test
+    public void testEditRecipe_correct3() throws NoSuchFieldException, IllegalAccessException{
+        add_recipe_helper(coffeeMaker, recipe4);
+        Recipe[] recipes = getRecipes_helper(coffeeMaker);
+        assertEquals(3, recipes.length);
+        assertEquals(recipe4, recipes[0]);
+        assertNull(recipes[1]);
+        assertNull(recipes[2]);
+        //edit first time
+        String newRecipeName = coffeeMaker.editRecipe(0, recipe4);
+
+        assertEquals(recipe4_g.getName(), newRecipeName);
+
+        recipes = getRecipes_helper(coffeeMaker);
+
+        assertEquals(3, recipes.length);
+        assertTrue(compareRecipeIngredient_helper(recipe4_g, recipes[0]));
+        assertNull(recipes[1]);
+        assertNull(recipes[2]);
+    }
+    /**
+     * edit a recipe to null*/
+    @Test(expected = NullPointerException.class)
+    public void testEditRecipe_editToNull1() throws NoSuchFieldException, IllegalAccessException{
+        add_recipe_helper(coffeeMaker, recipe4);
+        Recipe[] recipes = getRecipes_helper(coffeeMaker);
+        assertEquals(3, recipes.length);
+        assertEquals(recipe4, recipes[0]);
+        assertNull(recipes[1]);
+        assertNull(recipes[2]);
+        String newRecipeName = coffeeMaker.editRecipe(0, null);
+    }
+    /**
+     * edit an uninitialized recipe
+     * */
+    @Test
+    public void testEditRecipe_editUnInit1() throws NoSuchFieldException, IllegalAccessException{
+        add_recipe_helper(coffeeMaker, recipe4);
+        add_recipe_helper(coffeeMaker, recipe1);
+        Recipe[] recipes = getRecipes_helper(coffeeMaker);
+        assertEquals(3, recipes.length);
+        assertEquals(recipe4, recipes[0]);
+        assertEquals(recipe1, recipes[1]);
+        assertNull(recipes[2]);
+
+        String newRecipeName = coffeeMaker.editRecipe(2, recipe3);
+
+        assertNull(newRecipeName);
+
+        recipes = getRecipes_helper(coffeeMaker);
+
+        assertEquals(3, recipes.length);
+        assertEquals(recipe4, recipes[0]);
+        assertEquals(recipe1, recipes[1]);
+        assertNull(recipes[2]);
+    }
+    /**
+     * edit an out of boundary recipe slot: <0
+     * */
+    @Test
+    public void testEditRecipe_editOutOfBoundary1() throws NoSuchFieldException, IllegalAccessException{
+        add_recipe_helper(coffeeMaker, recipe4);
+        add_recipe_helper(coffeeMaker, recipe1);
+        Recipe[] recipes = getRecipes_helper(coffeeMaker);
+        assertEquals(3, recipes.length);
+        assertEquals(recipe4, recipes[0]);
+        assertEquals(recipe1, recipes[1]);
+        assertNull(recipes[2]);
+
+        String newRecipeName = coffeeMaker.editRecipe(-1, recipe3);
+
+        assertNull(newRecipeName);
+
+        recipes = getRecipes_helper(coffeeMaker);
+
+        assertEquals(3, recipes.length);
+        assertEquals(recipe4, recipes[0]);
+        assertEquals(recipe1, recipes[1]);
+        assertNull(recipes[2]);
+    }
+
+    /**
+     * edit an out of boundary recipe slot: greater than array length
+     * */
+    @Test
+    public void testEditRecipe_editOutOfBoundary2() throws NoSuchFieldException, IllegalAccessException{
+        add_recipe_helper(coffeeMaker, recipe4);
+        add_recipe_helper(coffeeMaker, recipe1);
+        Recipe[] recipes = getRecipes_helper(coffeeMaker);
+        assertEquals(3, recipes.length);
+        assertEquals(recipe4, recipes[0]);
+        assertEquals(recipe1, recipes[1]);
+        assertNull(recipes[2]);
+
+        String newRecipeName = coffeeMaker.editRecipe(3, recipe3);
+
+        assertNull(newRecipeName);
+
+        recipes = getRecipes_helper(coffeeMaker);
+
+        assertEquals(3, recipes.length);
+        assertEquals(recipe4, recipes[0]);
+        assertEquals(recipe1, recipes[1]);
+        assertNull(recipes[2]);
+    }
+    // end testing editRecipe
+    /*--------------------------------------------------------------------------------------------------------------------*/
     /**
      * Given a coffee maker with one valid recipe
      * When we make coffee, selecting the valid recipe and paying more than

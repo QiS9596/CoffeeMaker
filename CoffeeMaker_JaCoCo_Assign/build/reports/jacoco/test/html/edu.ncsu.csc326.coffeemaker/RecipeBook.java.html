@@ -56,12 +56,12 @@ public class RecipeBook {
 	 * @return String
 	 */
 	public synchronized String deleteRecipe(int recipeToDelete) {
-<span class="pc bpc" id="L59" title="1 of 2 branches missed.">		if (recipeArray[recipeToDelete] != null) {</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">		if (recipeArray[recipeToDelete] != null) {</span>
 <span class="fc" id="L60">			String recipeName = recipeArray[recipeToDelete].getName();</span>
 <span class="fc" id="L61">			recipeArray[recipeToDelete] = null;</span>
 <span class="fc" id="L62">			return recipeName;</span>
 		} else {
-<span class="nc" id="L64">			return null;</span>
+<span class="fc" id="L64">			return null;</span>
 		}
 	}
 	
@@ -73,13 +73,17 @@ public class RecipeBook {
 	 * @return String
 	 */
 	public synchronized String editRecipe(int recipeToEdit, Recipe newRecipe) {
-<span class="nc bnc" id="L76" title="All 2 branches missed.">		if (recipeArray[recipeToEdit] != null) {</span>
-<span class="nc" id="L77">			String recipeName = recipeArray[recipeToEdit].getName();</span>
-<span class="nc" id="L78">			newRecipe.setName(&quot;&quot;);</span>
-<span class="nc" id="L79">			recipeArray[recipeToEdit] = newRecipe;</span>
-<span class="nc" id="L80">			return recipeName;</span>
+<span class="fc bfc" id="L76" title="All 4 branches covered.">		if (recipeToEdit &lt; 0 || recipeToEdit &gt;= recipeArray.length){</span>
+<span class="fc" id="L77">			return null;</span>
+		}
+<span class="fc bfc" id="L79" title="All 2 branches covered.">		if (recipeArray[recipeToEdit] != null) {</span>
+<span class="fc" id="L80">			String recipeName = recipeArray[recipeToEdit].getName();</span>
+			//ERR-&gt;GOLDEN: setName(&quot;&quot;)-&gt;setName(recipeName)
+<span class="fc" id="L82">			newRecipe.setName(recipeName);</span>
+<span class="fc" id="L83">			recipeArray[recipeToEdit] = newRecipe;</span>
+<span class="fc" id="L84">			return recipeName;</span>
 		} else {
-<span class="nc" id="L82">			return null;</span>
+<span class="fc" id="L86">			return null;</span>
 		}
 	}
 
