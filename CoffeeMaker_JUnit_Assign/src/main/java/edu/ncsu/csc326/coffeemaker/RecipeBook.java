@@ -18,7 +18,8 @@ public class RecipeBook {
 	/** Array of recipes in coffee maker*/
 	private Recipe [] recipeArray;
 	/** Number of recipes in coffee maker */
-	private final int NUM_RECIPES = 4; 
+	//ERR-GOLDEN 4->3
+	private final int NUM_RECIPES = 3;
 	
 	/**
 	 * Default constructor for a RecipeBook.

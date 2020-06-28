@@ -18,8 +18,6 @@
  */
 package edu.ncsu.csc326.coffeemaker;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -31,6 +29,8 @@ import edu.ncsu.csc326.coffeemaker.Inventory;
 import org.junit.rules.ExpectedException;
 
 import java.lang.reflect.Field;
+
+import static org.junit.Assert.*;
 
 /**
  * Unit tests for CoffeeMaker class.
@@ -98,6 +98,8 @@ public class CoffeeMakerTest {
         recipe4.setPrice("65");
     }
 
+    /*--------------------------------------------------------------------------------------------------------------------*/
+    //testing add inventory method
 
     /**
      * Given a coffee maker with the default inventory
@@ -246,6 +248,88 @@ public class CoffeeMakerTest {
         }
 
     }
+    // end testing addInventory
+    /*--------------------------------------------------------------------------------------------------------------------*/
+    // start testing addRecipe
+
+    /**
+     * Safely add one receipe
+     * check if the remaining recipe slots are set to null
+     */
+    @Test
+    public void testAddRecipe_correct1() {
+        boolean add = coffeeMaker.addRecipe(recipe1);
+        assertTrue(add);
+        Recipe[] recipes = coffeeMaker.getRecipes();
+
+        assertEquals(3, recipes.length);
+        assertEquals(recipe1, recipes[0]);
+        assertNull(recipes[1]);
+        assertNull(recipes[2]);
+    }
+
+    /**
+     * Correctly add multiple recipes
+     * check if they are in order
+     */
+    @Test
+    public void testAddReceipe_correct2() {
+        boolean add4 = coffeeMaker.addRecipe(recipe4);
+        boolean add2 = coffeeMaker.addRecipe(recipe2);
+
+        assertTrue(add2);
+        assertTrue(add4);
+
+        Recipe[] recipes = coffeeMaker.getRecipes();
+
+        assertEquals(3, recipes.length);
+        assertEquals(recipe2, recipes[1]);
+        assertEquals(recipe4, recipes[0]);
+        assertNull(recipes[2]);
+    }
+
+    /**
+     * test addReceipe, add more than three recipes
+     */
+    @Test
+    public void testAddReceipe_overflow1() {
+        boolean add3 = coffeeMaker.addRecipe(recipe3);
+        boolean add1 = coffeeMaker.addRecipe(recipe1);
+        boolean add2 = coffeeMaker.addRecipe(recipe2);
+        boolean add4 = coffeeMaker.addRecipe(recipe4);
+
+        assertTrue(add3);
+        assertTrue(add1);
+        assertTrue(add2);
+        assertFalse(add4);
+
+        Recipe[] recipes = coffeeMaker.getRecipes();
+
+        assertEquals(3, recipes.length);
+        assertEquals(recipe3, recipes[0]);
+        assertEquals(recipe1, recipes[1]);
+        assertEquals(recipe2, recipes[2]);
+    }
+
+    /**
+     * test addReceipe, add duplicated recipes
+     */
+    @Test
+    public void testAddReceipe_duplicated1() {
+        boolean add1_1 = coffeeMaker.addRecipe(recipe1);
+        boolean add1_2 = coffeeMaker.addRecipe(recipe1);
+
+        assertTrue(add1_1);
+        assertFalse(add1_2);
+
+        Recipe[] recipes = coffeeMaker.getRecipes();
+        assertEquals(3, recipes.length);
+        assertEquals(recipe1, recipes[0]);
+        assertNull(recipes[1]);
+        assertNull(recipes[2]);
+    }
+    // end testing addRecipe
+    /*--------------------------------------------------------------------------------------------------------------------*/
 
     /**
      * Given a coffee maker with one valid recipe
