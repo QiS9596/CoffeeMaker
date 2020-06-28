@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff75f8ba-dc27-4634-ba72-fd2a492b7f72" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/.gradle/4.3.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/.gradle/4.3.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/.gradle/4.3.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/.gradle/4.3.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/.gradle/4.3.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/.gradle/4.3.1/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/.gradle/4.3.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/.gradle/4.3.1/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/build/classes/java/test/edu/ncsu/csc326/coffeemaker/CoffeeMakerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/build/classes/java/test/edu/ncsu/csc326/coffeemaker/CoffeeMakerTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/build/reports/tests/test/classes/edu.ncsu.csc326.coffeemaker.CoffeeMakerTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/build/reports/tests/test/classes/edu.ncsu.csc326.coffeemaker.CoffeeMakerTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/build/reports/tests/test/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/build/reports/tests/test/packages/edu.ncsu.csc326.coffeemaker.html" beforeDir="false" afterPath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/build/reports/tests/test/packages/edu.ncsu.csc326.coffeemaker.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/build/test-results/test/TEST-edu.ncsu.csc326.coffeemaker.CoffeeMakerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/build/test-results/test/TEST-edu.ncsu.csc326.coffeemaker.CoffeeMakerTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/build/test-results/test/binary/results.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/src/main/java/edu/ncsu/csc326/coffeemaker/RecipeBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/src/main/java/edu/ncsu/csc326/coffeemaker/RecipeBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/src/test/java/edu/ncsu/csc326/coffeemaker/CoffeeMakerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Assign/src/test/java/edu/ncsu/csc326/coffeemaker/CoffeeMakerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.3.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.3.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.3.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.3.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.3.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.3.1/taskHistory/taskHistory.bin" afterDir="false" />
@@ -28,7 +15,6 @@
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/edu.ncsu.csc326.coffeemaker.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/edu.ncsu.csc326.coffeemaker.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-edu.ncsu.csc326.coffeemaker.CoffeeMakerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-edu.ncsu.csc326.coffeemaker.CoffeeMakerTest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/edu/ncsu/csc326/coffeemaker/CoffeeMakerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/edu/ncsu/csc326/coffeemaker/CoffeeMakerTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/edu/ncsu/csc326/coffeemaker/CoffeeMakerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/ncsu/csc326/coffeemaker/CoffeeMakerTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -82,14 +68,14 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.5046317">
       <split-first>
         <leaf>
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/test/java/edu/ncsu/csc326/coffeemaker/CoffeeMakerTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="247">
-                  <caret line="287" column="28" selection-start-line="287" selection-start-column="28" selection-end-line="287" selection-end-column="28" />
+                <state relative-caret-position="535">
+                  <caret line="402" column="5" lean-forward="true" selection-start-line="402" selection-start-column="5" selection-end-line="402" selection-end-column="5" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -110,11 +96,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/edu/ncsu/csc326/coffeemaker/CoffeeMaker.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="500">
-                  <caret line="53" column="47" lean-forward="true" selection-start-line="53" selection-start-column="47" selection-end-line="53" selection-end-column="47" />
+                <state relative-caret-position="652">
+                  <caret line="123" column="41" selection-start-line="123" selection-start-column="41" selection-end-line="123" selection-end-column="41" />
                 </state>
               </provider>
             </entry>
@@ -122,20 +108,17 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/edu/ncsu/csc326/coffeemaker/Recipe.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="480">
+                <state relative-caret-position="-884">
                   <caret line="93" column="22" lean-forward="true" selection-start-line="93" selection-start-column="22" selection-end-line="93" selection-end-column="22" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/edu/ncsu/csc326/coffeemaker/RecipeBook.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="848">
-                  <caret line="75" column="38" selection-start-line="75" selection-start-column="24" selection-end-line="75" selection-end-column="38" />
-                  <folding>
-                    <element signature="e#0#2745#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="356">
+                  <caret line="75" column="38" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="38" />
                 </state>
               </provider>
             </entry>
@@ -158,8 +141,9 @@
       <find>milk</find>
       <find>could</find>
       <find>getR</find>
-      <find>delete</find>
       <find>name</find>
+      <find>get</find>
+      <find>delete</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -168,6 +152,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/main/java/edu/ncsu/csc326/coffeemaker/RecipeBook.java" />
         <option value="$PROJECT_DIR$/src/test/java/edu/ncsu/csc326/coffeemaker/CoffeeMakerTest.java" />
       </list>
     </option>
@@ -249,7 +234,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1593371037879" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1593372975607" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -353,7 +338,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1593362323344</updated>
-      <workItem from="1593362331659" duration="8394000" />
+      <workItem from="1593362331659" duration="10330000" />
     </task>
     <servers />
   </component>
@@ -369,7 +354,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8394000" />
+    <option name="totallyTimeSpent" value="10330000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
@@ -428,32 +413,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/ncsu/csc326/coffeemaker/Recipe.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
+        <state relative-caret-position="-884">
           <caret line="93" column="22" lean-forward="true" selection-start-line="93" selection-start-column="22" selection-end-line="93" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/ncsu/csc326/coffeemaker/RecipeBook.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="848">
-          <caret line="75" column="38" selection-start-line="75" selection-start-column="24" selection-end-line="75" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#2745#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/ncsu/csc326/coffeemaker/CoffeeMaker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="53" column="47" lean-forward="true" selection-start-line="53" selection-start-column="47" selection-end-line="53" selection-end-column="47" />
+        <state relative-caret-position="652">
+          <caret line="123" column="41" selection-start-line="123" selection-start-column="41" selection-end-line="123" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/ncsu/csc326/coffeemaker/RecipeBook.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="75" column="38" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/edu/ncsu/csc326/coffeemaker/CoffeeMakerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="287" column="28" selection-start-line="287" selection-start-column="28" selection-end-line="287" selection-end-column="28" />
+        <state relative-caret-position="535">
+          <caret line="402" column="5" lean-forward="true" selection-start-line="402" selection-start-column="5" selection-end-line="402" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
