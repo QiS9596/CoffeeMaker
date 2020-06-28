@@ -25,6 +25,9 @@ import org.junit.Test;
 
 import edu.ncsu.csc326.coffeemaker.exceptions.InventoryException;
 import edu.ncsu.csc326.coffeemaker.exceptions.RecipeException;
+import edu.ncsu.csc326.coffeemaker.Inventory;
+
+import java.lang.reflect.Field;
 
 /**
  * Unit tests for CoffeeMaker class.
@@ -102,8 +105,16 @@ public class CoffeeMakerTest {
      * 		to a positive integer.
      */
     @Test
-    public void testAddInventory() throws InventoryException {
+    public void testAddInventory_1() throws InventoryException, NoSuchFieldException, IllegalAccessException {
         coffeeMaker.addInventory("4","7","0","9");
+        Field inventory_field = CoffeeMaker.class.getDeclaredField("inventory");
+        inventory_field.setAccessible(true);
+        Inventory inventory = (Inventory) inventory_field.get(coffeeMaker);
+        // the default about of all resources should be 15
+        assertEquals(19, inventory.getCoffee()); // should be 15+4=19
+        assertEquals(22, inventory.getMilk()); // should be 15+7=22
+        assertEquals(15, inventory.getSugar()); // should be 15+0=15
+        assertEquals(24, inventory.getChocolate()); // should be 15+9=24
     }
 
     /**
