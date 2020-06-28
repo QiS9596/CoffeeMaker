@@ -43,6 +43,7 @@ public class CoffeeMakerTest {
 	 * The object under test.
 	 */
 	private CoffeeMaker coffeeMaker;
+	private Inventory inventory_test_obj;
 
 	// Sample recipes to use in testing.
 	private Recipe recipe1;
@@ -136,6 +137,8 @@ public class CoffeeMakerTest {
 		recipe4_g.setAmtMilk("1");
 		recipe4_g.setAmtSugar("1");
 		recipe4_g.setPrice("65");
+
+		inventory_test_obj = new Inventory();
 	}
 
 	/**
@@ -915,4 +918,159 @@ public class CoffeeMakerTest {
 		assertEquals(15, inventory.getSugar());
 	}
 
+	@Test
+	public void testMakeCoffee_accessNull6() throws NoSuchFieldException, IllegalAccessException{
+		Field inventory_field = CoffeeMaker.class.getDeclaredField("inventory");
+		inventory_field.setAccessible(true);
+		Inventory inventory = (Inventory) inventory_field.get(coffeeMaker);
+		inventory.setCoffee(5);
+
+
+		coffeeMaker.addRecipe(recipe1);
+		coffeeMaker.addRecipe(recipe2);
+		assertEquals(25, coffeeMaker.makeCoffee(0, 75));
+		assertEquals(75, coffeeMaker.makeCoffee(1, 75));
+
+		assertEquals(15, inventory.getChocolate());
+		assertEquals(2, inventory.getCoffee());
+		assertEquals(14, inventory.getMilk());
+		assertEquals(14, inventory.getSugar());
+	}
+
+	@Test
+	public void testMakeCoffee_accessNull7() throws NoSuchFieldException, IllegalAccessException{
+		Field inventory_field = CoffeeMaker.class.getDeclaredField("inventory");
+		inventory_field.setAccessible(true);
+		Inventory inventory = (Inventory) inventory_field.get(coffeeMaker);
+		inventory.setMilk(1);
+
+
+		coffeeMaker.addRecipe(recipe1);
+		coffeeMaker.addRecipe(recipe2);
+		assertEquals(25, coffeeMaker.makeCoffee(0, 75));
+		assertEquals(75, coffeeMaker.makeCoffee(1, 75));
+
+		assertEquals(15, inventory.getChocolate());
+		assertEquals(12, inventory.getCoffee());
+		assertEquals(0, inventory.getMilk());
+		assertEquals(14, inventory.getSugar());
+	}
+
+
+	@Test
+	public void testMakeCoffee_accessNull8() throws NoSuchFieldException, IllegalAccessException{
+		Field inventory_field = CoffeeMaker.class.getDeclaredField("inventory");
+		inventory_field.setAccessible(true);
+		Inventory inventory = (Inventory) inventory_field.get(coffeeMaker);
+		inventory.setSugar(1);
+
+
+		coffeeMaker.addRecipe(recipe1);
+		coffeeMaker.addRecipe(recipe2);
+		assertEquals(25, coffeeMaker.makeCoffee(0, 75));
+		assertEquals(75, coffeeMaker.makeCoffee(1, 75));
+
+		assertEquals(15, inventory.getChocolate());
+		assertEquals(12, inventory.getCoffee());
+		assertEquals(14, inventory.getMilk());
+		assertEquals(0, inventory.getSugar());
+	}
+
+	//end makeCoffee test
+	/*---------------------------------------------------------------------------------------------------------------------*/
+	// end of testing coffeeMaker
+	/*======================================================================================================================*/
+	//To merge everything into one file for easier uploading, we will have friend class test here instead of an independent
+	//file for each class
+	// as during the CoffeeMaker test we have cover lots of the function of it's attribute classes, we will be focusing
+	// on untested methods and codes under the guidance of Jacoco
+	/*-----------------------------------------------------------------------------------------------------------------------*/
+	//Test Inventory
+	//Test set methods
+	// setChocolate valid
+	@Test
+	public void testSetChocolate_valid1(){
+		assertEquals(15, inventory_test_obj.getChocolate());
+		inventory_test_obj.setChocolate(5);
+		assertEquals(5, inventory_test_obj.getChocolate());
+	}
+	@Test
+	public void testSetChocolate_valid2(){
+		assertEquals(15, inventory_test_obj.getChocolate());
+		inventory_test_obj.setChocolate(0);
+		assertEquals(0, inventory_test_obj.getChocolate());
+	}
+	// test setChocolate with invalid value
+	@Test
+	public void testSetChocolate_invalid1(){
+		assertEquals(15, inventory_test_obj.getChocolate());
+		inventory_test_obj.setChocolate(-1);
+		assertEquals(15, inventory_test_obj.getChocolate());
+	}
+
+
+	// setCoffee valid
+	@Test
+	public void testSetCoffee_valid1(){
+		assertEquals(15, inventory_test_obj.getCoffee());
+		inventory_test_obj.setCoffee(5);
+		assertEquals(5, inventory_test_obj.getCoffee());
+	}
+	@Test
+	public void testSetCoffee_valid2(){
+		assertEquals(15, inventory_test_obj.getCoffee());
+		inventory_test_obj.setCoffee(0);
+		assertEquals(0, inventory_test_obj.getCoffee());
+	}
+	// test setCoffee with invalid value
+	@Test
+	public void testSetCoffee_invalid1(){
+		assertEquals(15, inventory_test_obj.getCoffee());
+		inventory_test_obj.setCoffee(-1);
+		assertEquals(15, inventory_test_obj.getCoffee());
+	}
+
+	//setMilk valid
+	@Test
+	public void testSetMilk_valid1(){
+		assertEquals(15, inventory_test_obj.getMilk());
+		inventory_test_obj.setMilk(5);
+		assertEquals(5, inventory_test_obj.getMilk());
+	}
+	@Test
+	public void testSetMilk_valid2(){
+		assertEquals(15, inventory_test_obj.getMilk());
+		inventory_test_obj.setMilk(0);
+		assertEquals(0, inventory_test_obj.getMilk());
+	}
+	//setMilk Invalid
+	@Test
+	public void testSetMilk_invalid1(){
+		assertEquals(15, inventory_test_obj.getMilk());
+		inventory_test_obj.setMilk(-1);
+		assertEquals(15, inventory_test_obj.getMilk());
+	}
+
+	//setSugar valid
+	@Test
+	public void testSetSugar_valid1(){
+		assertEquals(15, inventory_test_obj.getSugar());
+		inventory_test_obj.setSugar(5);
+		assertEquals(5, inventory_test_obj.getSugar());
+	}
+	@Test
+	public void testSetSugar_valid2(){
+		assertEquals(15, inventory_test_obj.getSugar());
+		inventory_test_obj.setSugar(0);
+		assertEquals(0, inventory_test_obj.getSugar());
+	}
+
+	@Test
+	public void testSetSugar_invalid1(){
+		assertEquals(15, inventory_test_obj.getSugar());
+		inventory_test_obj.setSugar(-1);
+		assertEquals(15, inventory_test_obj.getSugar());
+	}
+	// end testing set method for Inventory
+	/*--------------------------------------------------------------------------------------------------------------------*/
 }
