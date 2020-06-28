@@ -190,6 +190,25 @@ public class CoffeeMakerTest {
                 (r1.getAmtMilk() == r2.getAmtMilk()) &&
                 (r1.getAmtSugar() == r2.getAmtSugar());
     }
+    /**
+     * Generate golden inventory String helper
+     * */
+    private String inventoryToStringGolden_helper(Inventory inventory){
+        StringBuffer buf = new StringBuffer();
+        buf.append("Coffee: ");
+        buf.append(inventory.getCoffee());
+        buf.append("\n");
+        buf.append("Milk: ");
+        buf.append(inventory.getMilk());
+        buf.append("\n");
+        buf.append("Sugar: ");
+        buf.append(inventory.getSugar());
+        buf.append("\n");
+        buf.append("Chocolate: ");
+        buf.append(inventory.getChocolate());
+        buf.append("\n");
+        return buf.toString();
+    }
     /*--------------------------------------------------------------------------------------------------------------------*/
     //testing add inventory method
 
@@ -747,7 +766,28 @@ public class CoffeeMakerTest {
     }
     // end testing editRecipe
     /*--------------------------------------------------------------------------------------------------------------------*/
+    //Start testing checkInventory
+    /**
+     * Simplest test: get default inventory report
+     * */
+    @Test
+    public void testCheckInventory_null1() throws NoSuchFieldException, IllegalAccessException{
+        Field inventory_field = CoffeeMaker.class.getDeclaredField("inventory");
 
+        inventory_field.setAccessible(true);
+        Inventory inventory = (Inventory) inventory_field.get(coffeeMaker);
+        // check init
+        assertEquals(15, inventory.getCoffee());
+        assertEquals(15, inventory.getMilk());
+        assertEquals(15, inventory.getSugar());
+        assertEquals(15, inventory.getChocolate());
+        String str = coffeeMaker.checkInventory();
+        assertEquals(inventoryToStringGolden_helper(inventory), str);
+    }
+
+    // end testing checkInventory
+    /*--------------------------------------------------------------------------------------------------------------------*/
+    // start testing makeCoffee
     /**
      * Given a coffee maker with one valid recipe
      * When we make coffee, selecting the valid recipe and paying more than
@@ -755,9 +795,124 @@ public class CoffeeMakerTest {
      * Then we get the correct change back.
      */
     @Test
-    public void testMakeCoffee() {
+    public void testMakeCoffee_correct1() throws NoSuchFieldException, IllegalAccessException{
         coffeeMaker.addRecipe(recipe1);
         assertEquals(25, coffeeMaker.makeCoffee(0, 75));
+
+        // check inventory was correctly used
+        Field inventory_field = CoffeeMaker.class.getDeclaredField("inventory");
+        inventory_field.setAccessible(true);
+        Inventory inventory = (Inventory) inventory_field.get(coffeeMaker);
+        assertEquals(15, inventory.getChocolate());
+        assertEquals(12, inventory.getCoffee());
+        assertEquals(14, inventory.getMilk());
+        assertEquals(14, inventory.getSugar());
+    }
+    @Test
+    public void testMakeCoffee_correct2()throws InventoryException, NoSuchFieldException, IllegalAccessException{
+        coffeeMaker.addRecipe(recipe1);
+        coffeeMaker.addRecipe(recipe2);
+        coffeeMaker.addInventory("0","0","0","5");
+        assertEquals(0, coffeeMaker.makeCoffee(1, 75));
+
+        Field inventory_field = CoffeeMaker.class.getDeclaredField("inventory");
+        inventory_field.setAccessible(true);
+        Inventory inventory = (Inventory) inventory_field.get(coffeeMaker);
+        assertEquals(0, inventory.getChocolate());
+        assertEquals(12, inventory.getCoffee());
+        assertEquals(14, inventory.getMilk());
+        assertEquals(14, inventory.getSugar());
+    }
+
+
+    @Test
+    public void testMakeCoffee_correct3()throws InventoryException, NoSuchFieldException, IllegalAccessException{
+        coffeeMaker.addRecipe(recipe1);
+        coffeeMaker.addRecipe(recipe2);
+        coffeeMaker.addInventory("0","0","0","5");
+        assertEquals(0, coffeeMaker.makeCoffee(1, 75));
+        assertEquals(25, coffeeMaker.makeCoffee(0, 75));
+        Field inventory_field = CoffeeMaker.class.getDeclaredField("inventory");
+        inventory_field.setAccessible(true);
+        Inventory inventory = (Inventory) inventory_field.get(coffeeMaker);
+        assertEquals(0, inventory.getChocolate());
+        assertEquals(9, inventory.getCoffee());
+        assertEquals(13, inventory.getMilk());
+        assertEquals(13, inventory.getSugar());
+    }
+    /**
+     * Try to access uninitialized recipe
+     * */
+    @Test
+    public void testMakeCoffee_accessNull1()throws NoSuchFieldException, IllegalAccessException{
+        coffeeMaker.addRecipe(recipe4);
+        assertEquals(200, coffeeMaker.makeCoffee(1, 200));
+
+        Field inventory_field = CoffeeMaker.class.getDeclaredField("inventory");
+        inventory_field.setAccessible(true);
+        Inventory inventory = (Inventory) inventory_field.get(coffeeMaker);
+        assertEquals(15, inventory.getChocolate());
+        assertEquals(15, inventory.getCoffee());
+        assertEquals(15, inventory.getMilk());
+        assertEquals(15, inventory.getSugar());
+    }
+    /**
+     * Try to access outof index order
+     * */
+    @Test
+    public void testMakeCoffee_accessNull2() throws NoSuchFieldException, IllegalAccessException{
+        coffeeMaker.addRecipe(recipe4);
+        assertEquals(200, coffeeMaker.makeCoffee(3, 200));
+        Field inventory_field = CoffeeMaker.class.getDeclaredField("inventory");
+        inventory_field.setAccessible(true);
+        Inventory inventory = (Inventory) inventory_field.get(coffeeMaker);
+        assertEquals(15, inventory.getChocolate());
+        assertEquals(15, inventory.getCoffee());
+        assertEquals(15, inventory.getMilk());
+        assertEquals(15, inventory.getSugar());
+    }
+    @Test
+    public void testMakeCoffee_accessNull3() throws NoSuchFieldException, IllegalAccessException{
+        coffeeMaker.addRecipe(recipe4);
+        assertEquals(200, coffeeMaker.makeCoffee(-1, 200));
+        Field inventory_field = CoffeeMaker.class.getDeclaredField("inventory");
+        inventory_field.setAccessible(true);
+        Inventory inventory = (Inventory) inventory_field.get(coffeeMaker);
+        assertEquals(15, inventory.getChocolate());
+        assertEquals(15, inventory.getCoffee());
+        assertEquals(15, inventory.getMilk());
+        assertEquals(15, inventory.getSugar());
+    }
+    /**
+     * try to access with insufficient found
+     * */
+    @Test
+    public void testMakeCoffee_accessNull4() throws NoSuchFieldException, IllegalAccessException{
+        coffeeMaker.addRecipe(recipe4);
+        assertEquals(64, coffeeMaker.makeCoffee(0, 64));
+        Field inventory_field = CoffeeMaker.class.getDeclaredField("inventory");
+        inventory_field.setAccessible(true);
+        Inventory inventory = (Inventory) inventory_field.get(coffeeMaker);
+        assertEquals(15, inventory.getChocolate());
+        assertEquals(15, inventory.getCoffee());
+        assertEquals(15, inventory.getMilk());
+        assertEquals(15, inventory.getSugar());
+    }
+    /**
+     * Try to access to insufficient supply
+     * */
+    @Test
+    public void testMakeCoffee_accessNull5() throws NoSuchFieldException, IllegalAccessException{
+        coffeeMaker.addRecipe(recipe1);
+        coffeeMaker.addRecipe(recipe2);
+        assertEquals(75, coffeeMaker.makeCoffee(1, 75));
+        Field inventory_field = CoffeeMaker.class.getDeclaredField("inventory");
+        inventory_field.setAccessible(true);
+        Inventory inventory = (Inventory) inventory_field.get(coffeeMaker);
+        assertEquals(15, inventory.getChocolate());
+        assertEquals(15, inventory.getCoffee());
+        assertEquals(15, inventory.getMilk());
+        assertEquals(15, inventory.getSugar());
     }
 
 }

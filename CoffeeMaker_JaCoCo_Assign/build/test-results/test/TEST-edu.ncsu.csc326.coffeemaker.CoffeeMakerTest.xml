@@ -1,34 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" tests="28" skipped="0" failures="0" errors="0" timestamp="2020-06-28T22:20:34" hostname="DESKTOP-J83E7LJ" time="0.011">
+<testsuite name="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" tests="36" skipped="0" failures="0" errors="0" timestamp="2020-06-28T23:02:14" hostname="DESKTOP-J83E7LJ" time="0.011">
   <properties/>
-  <testcase name="testEditRecipe_correct1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.004"/>
+  <testcase name="testEditRecipe_correct1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.002"/>
   <testcase name="testEditRecipe_correct2" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
   <testcase name="testEditRecipe_correct3" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
   <testcase name="testAddReceipe_correct2" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
-  <testcase name="testAddReceipe_overflow1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
-  <testcase name="testAddInventory_boundaryIntOverflow1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.001"/>
-  <testcase name="testMakeCoffee" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
+  <testcase name="testAddReceipe_overflow1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.001"/>
+  <testcase name="testAddInventory_boundaryIntOverflow1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
   <testcase name="testAddInventory_exception1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
   <testcase name="testAddInventory_exception2" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
   <testcase name="testAddInventory_exception3" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
   <testcase name="testAddInventory_exception4" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
   <testcase name="testAddInventory_exception5" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
-  <testcase name="testAddInventory_exception6" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.001"/>
-  <testcase name="testAddInventory_exception7" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
+  <testcase name="testAddInventory_exception6" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
+  <testcase name="testAddInventory_exception7" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.001"/>
   <testcase name="testAddInventory_exception8" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
   <testcase name="testEditRecipe_editOutOfBoundary1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
-  <testcase name="testEditRecipe_editOutOfBoundary2" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
+  <testcase name="testEditRecipe_editOutOfBoundary2" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.001"/>
   <testcase name="testDeleteRecipe_deleteNull1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
   <testcase name="testAddInventory_correct1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
   <testcase name="testAddInventory_correct2" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
   <testcase name="testAddInventory_correct3" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
-  <testcase name="testDeleteRecipe_correct1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.001"/>
-  <testcase name="testDeleteRecipe_correct2" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
+  <testcase name="testDeleteRecipe_correct1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
+  <testcase name="testDeleteRecipe_correct2" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.001"/>
+  <testcase name="testMakeCoffee_accessNull1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
+  <testcase name="testMakeCoffee_accessNull2" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
+  <testcase name="testMakeCoffee_accessNull3" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
+  <testcase name="testMakeCoffee_accessNull4" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
+  <testcase name="testMakeCoffee_accessNull5" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
+  <testcase name="testMakeCoffee_correct1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.001"/>
+  <testcase name="testMakeCoffee_correct2" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
+  <testcase name="testMakeCoffee_correct3" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
   <testcase name="testEditRecipe_editToNull1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
   <testcase name="testAddRecipe_duplicated1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
-  <testcase name="testEditRecipe_editUnInit1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
+  <testcase name="testEditRecipe_editUnInit1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.001"/>
   <testcase name="testDeleteRecipe_redelete1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
-  <testcase name="testAddRecipe_correct1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.001"/>
+  <testcase name="testCheckInventory_null1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
+  <testcase name="testAddRecipe_correct1" classname="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

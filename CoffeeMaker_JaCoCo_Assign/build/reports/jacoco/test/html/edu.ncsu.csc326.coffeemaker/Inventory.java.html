@@ -204,8 +204,8 @@ public class Inventory {
 <span class="pc bpc" id="L204" title="1 of 2 branches missed.">        if(Inventory.sugar &lt; r.getAmtSugar()) {</span>
 <span class="nc" id="L205">            isEnough = false;</span>
         }
-<span class="pc bpc" id="L207" title="1 of 2 branches missed.">        if(Inventory.chocolate &lt; r.getAmtChocolate()) {</span>
-<span class="nc" id="L208">            isEnough = false;</span>
+<span class="fc bfc" id="L207" title="All 2 branches covered.">        if(Inventory.chocolate &lt; r.getAmtChocolate()) {</span>
+<span class="fc" id="L208">            isEnough = false;</span>
         }
 <span class="fc" id="L210">        return isEnough;</span>
     }
@@ -217,14 +217,15 @@ public class Inventory {
      * @param r
      */
     public synchronized boolean useIngredients(Recipe r) {
-<span class="pc bpc" id="L220" title="1 of 2 branches missed.">    	if (enoughIngredients(r)) {</span>
-<span class="fc" id="L221">	    	Inventory.coffee += r.getAmtCoffee();</span>
-<span class="fc" id="L222">	    	Inventory.milk -= r.getAmtMilk();</span>
-<span class="fc" id="L223">	    	Inventory.sugar -= r.getAmtSugar();</span>
-<span class="fc" id="L224">	    	Inventory.chocolate -= r.getAmtChocolate();</span>
-<span class="fc" id="L225">	    	return true;</span>
+<span class="fc bfc" id="L220" title="All 2 branches covered.">    	if (enoughIngredients(r)) {</span>
+    		//ERR-&gt;GOLDEN:+= -&gt; -=
+<span class="fc" id="L222">	    	Inventory.coffee -= r.getAmtCoffee();</span>
+<span class="fc" id="L223">	    	Inventory.milk -= r.getAmtMilk();</span>
+<span class="fc" id="L224">	    	Inventory.sugar -= r.getAmtSugar();</span>
+<span class="fc" id="L225">	    	Inventory.chocolate -= r.getAmtChocolate();</span>
+<span class="fc" id="L226">	    	return true;</span>
     	} else {
-<span class="nc" id="L227">    		return false;</span>
+<span class="fc" id="L228">    		return false;</span>
     	}
     }
     
@@ -234,20 +235,20 @@ public class Inventory {
      * @return String
      */
     public String toString() {
-<span class="nc" id="L237">    	StringBuffer buf = new StringBuffer();</span>
-<span class="nc" id="L238">    	buf.append(&quot;Coffee: &quot;);</span>
-<span class="nc" id="L239">    	buf.append(getCoffee());</span>
-<span class="nc" id="L240">    	buf.append(&quot;\n&quot;);</span>
-<span class="nc" id="L241">    	buf.append(&quot;Milk: &quot;);</span>
-<span class="nc" id="L242">    	buf.append(getMilk());</span>
-<span class="nc" id="L243">    	buf.append(&quot;\n&quot;);</span>
-<span class="nc" id="L244">    	buf.append(&quot;Sugar: &quot;);</span>
-<span class="nc" id="L245">    	buf.append(getSugar());</span>
-<span class="nc" id="L246">    	buf.append(&quot;\n&quot;);</span>
-<span class="nc" id="L247">    	buf.append(&quot;Chocolate: &quot;);</span>
-<span class="nc" id="L248">    	buf.append(getChocolate());</span>
-<span class="nc" id="L249">    	buf.append(&quot;\n&quot;);</span>
-<span class="nc" id="L250">    	return buf.toString();</span>
+<span class="fc" id="L238">    	StringBuffer buf = new StringBuffer();</span>
+<span class="fc" id="L239">    	buf.append(&quot;Coffee: &quot;);</span>
+<span class="fc" id="L240">    	buf.append(getCoffee());</span>
+<span class="fc" id="L241">    	buf.append(&quot;\n&quot;);</span>
+<span class="fc" id="L242">    	buf.append(&quot;Milk: &quot;);</span>
+<span class="fc" id="L243">    	buf.append(getMilk());</span>
+<span class="fc" id="L244">    	buf.append(&quot;\n&quot;);</span>
+<span class="fc" id="L245">    	buf.append(&quot;Sugar: &quot;);</span>
+<span class="fc" id="L246">    	buf.append(getSugar());</span>
+<span class="fc" id="L247">    	buf.append(&quot;\n&quot;);</span>
+<span class="fc" id="L248">    	buf.append(&quot;Chocolate: &quot;);</span>
+<span class="fc" id="L249">    	buf.append(getChocolate());</span>
+<span class="fc" id="L250">    	buf.append(&quot;\n&quot;);</span>
+<span class="fc" id="L251">    	return buf.toString();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

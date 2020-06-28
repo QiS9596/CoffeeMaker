@@ -73,7 +73,7 @@ public class CoffeeMaker {
      * @return Inventory
      */
     public synchronized String checkInventory() {
-<span class="nc" id="L76">        return inventory.toString();</span>
+<span class="fc" id="L76">        return inventory.toString();</span>
     }
     
     /**
@@ -85,20 +85,22 @@ public class CoffeeMaker {
      */
     public synchronized int makeCoffee(int recipeToPurchase, int amtPaid) {
 <span class="fc" id="L87">        int change = 0;</span>
-        
-<span class="pc bpc" id="L89" title="1 of 2 branches missed.">        if (getRecipes()[recipeToPurchase] == null) {</span>
-<span class="nc" id="L90">        	change = amtPaid;</span>
-<span class="pc bpc" id="L91" title="1 of 2 branches missed.">        } else if (getRecipes()[recipeToPurchase].getPrice() &lt;= amtPaid) {</span>
-<span class="pc bpc" id="L92" title="1 of 2 branches missed.">        	if (inventory.useIngredients(getRecipes()[recipeToPurchase])) {</span>
-<span class="fc" id="L93">        		change = amtPaid - getRecipes()[recipeToPurchase].getPrice();</span>
+		//ERR-&gt;GOLDEN:boundary
+<span class="fc bfc" id="L89" title="All 2 branches covered.">		if (recipeToPurchase &lt; 0 ||</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">				recipeToPurchase &gt;= getRecipes().length ||</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">				getRecipes()[recipeToPurchase] == null) {</span>
+<span class="fc" id="L92">			change = amtPaid;</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">		}  else if (getRecipes()[recipeToPurchase].getPrice() &lt;= amtPaid) {</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">        	if (inventory.useIngredients(getRecipes()[recipeToPurchase])) {</span>
+<span class="fc" id="L95">        		change = amtPaid - getRecipes()[recipeToPurchase].getPrice();</span>
         	} else {
-<span class="nc" id="L95">        		change = amtPaid;</span>
+<span class="fc" id="L97">        		change = amtPaid;</span>
         	}
         } else {
-<span class="nc" id="L98">        	change = amtPaid;</span>
+<span class="fc" id="L100">        	change = amtPaid;</span>
         }
         
-<span class="fc" id="L101">        return change;</span>
+<span class="fc" id="L103">        return change;</span>
     }
 
 	/**
@@ -106,7 +108,7 @@ public class CoffeeMaker {
 	 * @return Recipe []
 	 */
 	public synchronized Recipe[] getRecipes() {
-<span class="fc" id="L109">		return recipeBook.getRecipes();</span>
+<span class="fc" id="L111">		return recipeBook.getRecipes();</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
