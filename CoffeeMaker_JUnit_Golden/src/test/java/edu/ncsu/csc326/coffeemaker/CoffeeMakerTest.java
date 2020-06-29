@@ -44,6 +44,7 @@ public class CoffeeMakerTest {
      */
     private CoffeeMaker coffeeMaker;
     private Inventory inventory_test_obj;
+    private Recipe recipe_test_obj;
 
     // Sample recipes to use in testing.
     private Recipe recipe1;
@@ -139,6 +140,15 @@ public class CoffeeMakerTest {
         recipe4_g.setPrice("65");
 
         inventory_test_obj = new Inventory();
+
+        recipe_test_obj = new Recipe();
+        recipe_test_obj.setName("Hot Chocolate");
+        recipe_test_obj.setAmtChocolate("4");
+        recipe_test_obj.setAmtCoffee("0");
+        recipe_test_obj.setAmtMilk("1");
+        recipe_test_obj.setAmtSugar("1");
+        recipe_test_obj.setPrice("65");
+
     }
 
     /**
@@ -193,10 +203,11 @@ public class CoffeeMakerTest {
                 (r1.getAmtMilk() == r2.getAmtMilk()) &&
                 (r1.getAmtSugar() == r2.getAmtSugar());
     }
+
     /**
      * Generate golden inventory String helper
-     * */
-    private String inventoryToStringGolden_helper(Inventory inventory){
+     */
+    private String inventoryToStringGolden_helper(Inventory inventory) {
         StringBuffer buf = new StringBuffer();
         buf.append("Coffee: ");
         buf.append(inventory.getCoffee());
@@ -211,6 +222,16 @@ public class CoffeeMakerTest {
         buf.append(inventory.getChocolate());
         buf.append("\n");
         return buf.toString();
+    }
+
+    /**
+     * Generate golden hashCode for Recipe object
+     */
+    private int hashCodeGolden_helper(Recipe r) {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((r.getName() == null) ? 0 : r.getName().hashCode());
+        return result;
     }
     /*--------------------------------------------------------------------------------------------------------------------*/
     //testing add inventory method
@@ -330,7 +351,6 @@ public class CoffeeMakerTest {
     }
 
 
-
     /**
      * Given a coffee maker with the default inventory
      * When we add inventory with malformed quantities (i.e., a negative
@@ -364,11 +384,13 @@ public class CoffeeMakerTest {
         }
 
     }
+
     // for coverage
     @Test(expected = InventoryException.class)
     public void testAddInventory_exception3() throws InventoryException {
         coffeeMaker.addInventory("-14", "-1", "asdf", "3");
     }
+
     @Test(expected = InventoryException.class)
     public void testAddInventory_exception4() throws InventoryException {
         coffeeMaker.addInventory("2", "123kl", "asdf", "3");
@@ -770,11 +792,12 @@ public class CoffeeMakerTest {
     // end testing editRecipe
     /*--------------------------------------------------------------------------------------------------------------------*/
     //Start testing checkInventory
+
     /**
      * Simplest test: get default inventory report
-     * */
+     */
     @Test
-    public void testCheckInventory_null1() throws NoSuchFieldException, IllegalAccessException{
+    public void testCheckInventory_null1() throws NoSuchFieldException, IllegalAccessException {
         Field inventory_field = CoffeeMaker.class.getDeclaredField("inventory");
 
         inventory_field.setAccessible(true);
@@ -791,6 +814,7 @@ public class CoffeeMakerTest {
     // end testing checkInventory
     /*--------------------------------------------------------------------------------------------------------------------*/
     // start testing makeCoffee
+
     /**
      * Given a coffee maker with one valid recipe
      * When we make coffee, selecting the valid recipe and paying more than
@@ -798,7 +822,7 @@ public class CoffeeMakerTest {
      * Then we get the correct change back.
      */
     @Test
-    public void testMakeCoffee_correct1() throws NoSuchFieldException, IllegalAccessException{
+    public void testMakeCoffee_correct1() throws NoSuchFieldException, IllegalAccessException {
         coffeeMaker.addRecipe(recipe1);
         assertEquals(25, coffeeMaker.makeCoffee(0, 75));
 
@@ -811,11 +835,12 @@ public class CoffeeMakerTest {
         assertEquals(14, inventory.getMilk());
         assertEquals(14, inventory.getSugar());
     }
+
     @Test
-    public void testMakeCoffee_correct2()throws InventoryException, NoSuchFieldException, IllegalAccessException{
+    public void testMakeCoffee_correct2() throws InventoryException, NoSuchFieldException, IllegalAccessException {
         coffeeMaker.addRecipe(recipe1);
         coffeeMaker.addRecipe(recipe2);
-        coffeeMaker.addInventory("0","0","0","5");
+        coffeeMaker.addInventory("0", "0", "0", "5");
         assertEquals(0, coffeeMaker.makeCoffee(1, 75));
 
         Field inventory_field = CoffeeMaker.class.getDeclaredField("inventory");
@@ -829,10 +854,10 @@ public class CoffeeMakerTest {
 
 
     @Test
-    public void testMakeCoffee_correct3()throws InventoryException, NoSuchFieldException, IllegalAccessException{
+    public void testMakeCoffee_correct3() throws InventoryException, NoSuchFieldException, IllegalAccessException {
         coffeeMaker.addRecipe(recipe1);
         coffeeMaker.addRecipe(recipe2);
-        coffeeMaker.addInventory("0","0","0","5");
+        coffeeMaker.addInventory("0", "0", "0", "5");
         assertEquals(0, coffeeMaker.makeCoffee(1, 75));
         assertEquals(25, coffeeMaker.makeCoffee(0, 75));
         Field inventory_field = CoffeeMaker.class.getDeclaredField("inventory");
@@ -843,11 +868,12 @@ public class CoffeeMakerTest {
         assertEquals(13, inventory.getMilk());
         assertEquals(13, inventory.getSugar());
     }
+
     /**
      * Try to access uninitialized recipe
-     * */
+     */
     @Test
-    public void testMakeCoffee_accessNull1()throws NoSuchFieldException, IllegalAccessException{
+    public void testMakeCoffee_accessNull1() throws NoSuchFieldException, IllegalAccessException {
         coffeeMaker.addRecipe(recipe4);
         assertEquals(200, coffeeMaker.makeCoffee(1, 200));
 
@@ -859,11 +885,12 @@ public class CoffeeMakerTest {
         assertEquals(15, inventory.getMilk());
         assertEquals(15, inventory.getSugar());
     }
+
     /**
      * Try to access outof index order
-     * */
+     */
     @Test
-    public void testMakeCoffee_accessNull2() throws NoSuchFieldException, IllegalAccessException{
+    public void testMakeCoffee_accessNull2() throws NoSuchFieldException, IllegalAccessException {
         coffeeMaker.addRecipe(recipe4);
         assertEquals(200, coffeeMaker.makeCoffee(3, 200));
         Field inventory_field = CoffeeMaker.class.getDeclaredField("inventory");
@@ -874,8 +901,9 @@ public class CoffeeMakerTest {
         assertEquals(15, inventory.getMilk());
         assertEquals(15, inventory.getSugar());
     }
+
     @Test
-    public void testMakeCoffee_accessNull3() throws NoSuchFieldException, IllegalAccessException{
+    public void testMakeCoffee_accessNull3() throws NoSuchFieldException, IllegalAccessException {
         coffeeMaker.addRecipe(recipe4);
         assertEquals(200, coffeeMaker.makeCoffee(-1, 200));
         Field inventory_field = CoffeeMaker.class.getDeclaredField("inventory");
@@ -886,11 +914,12 @@ public class CoffeeMakerTest {
         assertEquals(15, inventory.getMilk());
         assertEquals(15, inventory.getSugar());
     }
+
     /**
      * try to access with insufficient found
-     * */
+     */
     @Test
-    public void testMakeCoffee_accessNull4() throws NoSuchFieldException, IllegalAccessException{
+    public void testMakeCoffee_accessNull4() throws NoSuchFieldException, IllegalAccessException {
         coffeeMaker.addRecipe(recipe4);
         assertEquals(64, coffeeMaker.makeCoffee(0, 64));
         Field inventory_field = CoffeeMaker.class.getDeclaredField("inventory");
@@ -901,11 +930,12 @@ public class CoffeeMakerTest {
         assertEquals(15, inventory.getMilk());
         assertEquals(15, inventory.getSugar());
     }
+
     /**
      * Try to access to insufficient supply
-     * */
+     */
     @Test
-    public void testMakeCoffee_accessNull5() throws NoSuchFieldException, IllegalAccessException{
+    public void testMakeCoffee_accessNull5() throws NoSuchFieldException, IllegalAccessException {
         coffeeMaker.addRecipe(recipe1);
         coffeeMaker.addRecipe(recipe2);
         assertEquals(75, coffeeMaker.makeCoffee(1, 75));
@@ -919,7 +949,7 @@ public class CoffeeMakerTest {
     }
 
     @Test
-    public void testMakeCoffee_accessNull6() throws NoSuchFieldException, IllegalAccessException{
+    public void testMakeCoffee_accessNull6() throws NoSuchFieldException, IllegalAccessException {
         Field inventory_field = CoffeeMaker.class.getDeclaredField("inventory");
         inventory_field.setAccessible(true);
         Inventory inventory = (Inventory) inventory_field.get(coffeeMaker);
@@ -938,7 +968,7 @@ public class CoffeeMakerTest {
     }
 
     @Test
-    public void testMakeCoffee_accessNull7() throws NoSuchFieldException, IllegalAccessException{
+    public void testMakeCoffee_accessNull7() throws NoSuchFieldException, IllegalAccessException {
         Field inventory_field = CoffeeMaker.class.getDeclaredField("inventory");
         inventory_field.setAccessible(true);
         Inventory inventory = (Inventory) inventory_field.get(coffeeMaker);
@@ -958,7 +988,7 @@ public class CoffeeMakerTest {
 
 
     @Test
-    public void testMakeCoffee_accessNull8() throws NoSuchFieldException, IllegalAccessException{
+    public void testMakeCoffee_accessNull8() throws NoSuchFieldException, IllegalAccessException {
         Field inventory_field = CoffeeMaker.class.getDeclaredField("inventory");
         inventory_field.setAccessible(true);
         Inventory inventory = (Inventory) inventory_field.get(coffeeMaker);
@@ -989,20 +1019,22 @@ public class CoffeeMakerTest {
     //Test set methods
     // setChocolate valid
     @Test
-    public void testSetChocolate_valid1(){
+    public void testSetChocolate_valid1() {
         assertEquals(15, inventory_test_obj.getChocolate());
         inventory_test_obj.setChocolate(5);
         assertEquals(5, inventory_test_obj.getChocolate());
     }
+
     @Test
-    public void testSetChocolate_valid2(){
+    public void testSetChocolate_valid2() {
         assertEquals(15, inventory_test_obj.getChocolate());
         inventory_test_obj.setChocolate(0);
         assertEquals(0, inventory_test_obj.getChocolate());
     }
+
     // test setChocolate with invalid value
     @Test
-    public void testSetChocolate_invalid1(){
+    public void testSetChocolate_invalid1() {
         assertEquals(15, inventory_test_obj.getChocolate());
         inventory_test_obj.setChocolate(-1);
         assertEquals(15, inventory_test_obj.getChocolate());
@@ -1011,20 +1043,22 @@ public class CoffeeMakerTest {
 
     // setCoffee valid
     @Test
-    public void testSetCoffee_valid1(){
+    public void testSetCoffee_valid1() {
         assertEquals(15, inventory_test_obj.getCoffee());
         inventory_test_obj.setCoffee(5);
         assertEquals(5, inventory_test_obj.getCoffee());
     }
+
     @Test
-    public void testSetCoffee_valid2(){
+    public void testSetCoffee_valid2() {
         assertEquals(15, inventory_test_obj.getCoffee());
         inventory_test_obj.setCoffee(0);
         assertEquals(0, inventory_test_obj.getCoffee());
     }
+
     // test setCoffee with invalid value
     @Test
-    public void testSetCoffee_invalid1(){
+    public void testSetCoffee_invalid1() {
         assertEquals(15, inventory_test_obj.getCoffee());
         inventory_test_obj.setCoffee(-1);
         assertEquals(15, inventory_test_obj.getCoffee());
@@ -1032,20 +1066,22 @@ public class CoffeeMakerTest {
 
     //setMilk valid
     @Test
-    public void testSetMilk_valid1(){
+    public void testSetMilk_valid1() {
         assertEquals(15, inventory_test_obj.getMilk());
         inventory_test_obj.setMilk(5);
         assertEquals(5, inventory_test_obj.getMilk());
     }
+
     @Test
-    public void testSetMilk_valid2(){
+    public void testSetMilk_valid2() {
         assertEquals(15, inventory_test_obj.getMilk());
         inventory_test_obj.setMilk(0);
         assertEquals(0, inventory_test_obj.getMilk());
     }
+
     //setMilk Invalid
     @Test
-    public void testSetMilk_invalid1(){
+    public void testSetMilk_invalid1() {
         assertEquals(15, inventory_test_obj.getMilk());
         inventory_test_obj.setMilk(-1);
         assertEquals(15, inventory_test_obj.getMilk());
@@ -1053,24 +1089,343 @@ public class CoffeeMakerTest {
 
     //setSugar valid
     @Test
-    public void testSetSugar_valid1(){
+    public void testSetSugar_valid1() {
         assertEquals(15, inventory_test_obj.getSugar());
         inventory_test_obj.setSugar(5);
         assertEquals(5, inventory_test_obj.getSugar());
     }
+
     @Test
-    public void testSetSugar_valid2(){
+    public void testSetSugar_valid2() {
         assertEquals(15, inventory_test_obj.getSugar());
         inventory_test_obj.setSugar(0);
         assertEquals(0, inventory_test_obj.getSugar());
     }
 
     @Test
-    public void testSetSugar_invalid1(){
+    public void testSetSugar_invalid1() {
         assertEquals(15, inventory_test_obj.getSugar());
         inventory_test_obj.setSugar(-1);
         assertEquals(15, inventory_test_obj.getSugar());
     }
+
     // end testing set method for Inventory
     /*--------------------------------------------------------------------------------------------------------------------*/
+    //start testing Recipe class
+    //hashCode with valid name value
+    @Test
+    public void testHashCode_valid1() {
+        assertEquals(hashCodeGolden_helper(recipe_test_obj), recipe_test_obj.hashCode());
+    }
+
+    //hashCode with null name value
+    @Test
+    public void testHashCode_invalid1() throws NoSuchFieldException, IllegalAccessException {
+        Field name_filed = Recipe.class.getDeclaredField("name");
+        name_filed.setAccessible(true);
+        name_filed.set(recipe_test_obj, null);
+        assertNull(recipe_test_obj.getName());
+        assertEquals(hashCodeGolden_helper(recipe_test_obj), recipe_test_obj.hashCode());
+    }
+
+    // end testing hashCode method
+    // start testing setters
+    //valid setAmtChocolate
+    @Test
+    public void testSetAmtChocolate_valid1() throws RecipeException, NoSuchFieldException, IllegalAccessException {
+        Field chocolateAmt_field = Recipe.class.getDeclaredField("amtChocolate");
+        chocolateAmt_field.setAccessible(true);
+        int chocolateAmt = chocolateAmt_field.getInt(recipe_test_obj);
+        assertEquals(4, chocolateAmt);
+
+        recipe_test_obj.setAmtChocolate("2");
+        chocolateAmt = chocolateAmt_field.getInt(recipe_test_obj);
+        assertEquals(2, chocolateAmt);
+    }
+
+    //invalid setAmtChocolate
+    @Test
+    public void testSetAmtChocolate_invalid1() throws RecipeException, NoSuchFieldException, IllegalAccessException {
+        Field chocolateAmt_field = Recipe.class.getDeclaredField("amtChocolate");
+        chocolateAmt_field.setAccessible(true);
+        int chocolateAmt = chocolateAmt_field.getInt(recipe_test_obj);
+        assertEquals(4, chocolateAmt);
+        try {
+            recipe_test_obj.setAmtChocolate("rwji123");
+        } catch (RecipeException e) {
+            assertEquals("Units of chocolate must be a positive integer", e.getMessage());
+            chocolateAmt = chocolateAmt_field.getInt(recipe_test_obj);
+            assertEquals(4, chocolateAmt);
+        }
+    }
+
+    @Test
+    public void testSetAmtChocolate_invalid2() throws NoSuchFieldException, IllegalAccessException{
+        Field chocolateAmt_field = Recipe.class.getDeclaredField("amtChocolate");
+        chocolateAmt_field.setAccessible(true);
+        int chocolateAmt = chocolateAmt_field.getInt(recipe_test_obj);
+        assertEquals(4, chocolateAmt);
+        try {
+            recipe_test_obj.setAmtChocolate("-3");
+        } catch (RecipeException e) {
+            assertEquals("Units of chocolate must be a positive integer", e.getMessage());
+            chocolateAmt = chocolateAmt_field.getInt(recipe_test_obj);
+            assertEquals(4, chocolateAmt);
+        }
+    }
+
+    //coffee setter
+    //valid setAmtCoffee
+    @Test
+    public void testSetAmtCoffee_valid1() throws RecipeException, NoSuchFieldException, IllegalAccessException {
+        Field coffeeAmt_field = Recipe.class.getDeclaredField("amtCoffee");
+        coffeeAmt_field.setAccessible(true);
+        int coffeeAmt = coffeeAmt_field.getInt(recipe_test_obj);
+        assertEquals(0, coffeeAmt);
+
+        recipe_test_obj.setAmtCoffee("3");
+        coffeeAmt = coffeeAmt_field.getInt(recipe_test_obj);
+        assertEquals(3, coffeeAmt);
+    }
+
+    //invalid setAmtCoffee
+    @Test
+    public void testSetAmtCoffee_invalid1() throws RecipeException, NoSuchFieldException, IllegalAccessException {
+        Field coffeeAmt_field = Recipe.class.getDeclaredField("amtCoffee");
+        coffeeAmt_field.setAccessible(true);
+        int coffeeAmt = coffeeAmt_field.getInt(recipe_test_obj);
+        assertEquals(0, coffeeAmt);
+        try {
+            recipe_test_obj.setAmtCoffee("rwji123");
+        } catch (RecipeException e) {
+            assertEquals("Units of coffee must be a positive integer", e.getMessage());
+            coffeeAmt = coffeeAmt_field.getInt(recipe_test_obj);
+            assertEquals(0, coffeeAmt);
+        }
+    }
+
+    @Test
+    public void testSetAmtCoffee_invalid2() throws RecipeException, NoSuchFieldException, IllegalAccessException {
+        Field coffeeAmt_field = Recipe.class.getDeclaredField("amtCoffee");
+        coffeeAmt_field.setAccessible(true);
+        int coffeeAmt = coffeeAmt_field.getInt(recipe_test_obj);
+        assertEquals(0, coffeeAmt);
+        try {
+            recipe_test_obj.setAmtCoffee("-1");
+        } catch (RecipeException e) {
+            assertEquals("Units of coffee must be a positive integer", e.getMessage());
+            coffeeAmt = coffeeAmt_field.getInt(recipe_test_obj);
+            assertEquals(0, coffeeAmt);
+        }
+    }
+
+    // milk setters
+    @Test
+    public void testSetAmtMilk_valid1() throws RecipeException, NoSuchFieldException, IllegalAccessException {
+        Field amtMilk_field = Recipe.class.getDeclaredField("amtMilk");
+        amtMilk_field.setAccessible(true);
+        int milkAmt = amtMilk_field.getInt(recipe_test_obj);
+        assertEquals(1, milkAmt);
+
+        recipe_test_obj.setAmtMilk("3");
+        milkAmt = amtMilk_field.getInt(recipe_test_obj);
+        assertEquals(3, milkAmt);
+    }
+    @Test
+    public void testSetAmtMilk_invalid1() throws NoSuchFieldException, IllegalAccessException {
+        Field amtMilk_field = Recipe.class.getDeclaredField("amtMilk");
+        amtMilk_field.setAccessible(true);
+        int milkAmt = amtMilk_field.getInt(recipe_test_obj);
+        assertEquals(1, milkAmt);
+        try {
+            recipe_test_obj.setAmtMilk("rwji123");
+        } catch (RecipeException e) {
+            assertEquals("Units of milk must be a positive integer", e.getMessage());
+            milkAmt = amtMilk_field.getInt(recipe_test_obj);
+            assertEquals(1, milkAmt);
+        }
+    }
+    @Test
+    public void testSetAmtMilk_invalid2() throws NoSuchFieldException, IllegalAccessException {
+        Field amtMilk_field = Recipe.class.getDeclaredField("amtMilk");
+        amtMilk_field.setAccessible(true);
+        int milkAmt = amtMilk_field.getInt(recipe_test_obj);
+        assertEquals(1, milkAmt);
+        try {
+            recipe_test_obj.setAmtMilk("-3");
+        } catch (RecipeException e) {
+            assertEquals("Units of milk must be a positive integer", e.getMessage());
+            milkAmt = amtMilk_field.getInt(recipe_test_obj);
+            assertEquals(1, milkAmt);
+        }
+    }
+
+    //Suger setters
+    @Test
+    public void testSetAmtSugar_valid1() throws RecipeException, NoSuchFieldException, IllegalAccessException {
+        Field amtSugar_field = Recipe.class.getDeclaredField("amtSugar");
+        amtSugar_field.setAccessible(true);
+        int sugarAmt = amtSugar_field.getInt(recipe_test_obj);
+        assertEquals(1, sugarAmt);
+
+        recipe_test_obj.setAmtSugar("3");
+        sugarAmt = amtSugar_field.getInt(recipe_test_obj);
+        assertEquals(3, sugarAmt);
+    }
+    @Test
+    public void testSetAmtSugar_invalid1() throws NoSuchFieldException, IllegalAccessException {
+        Field amtSugar_field = Recipe.class.getDeclaredField("amtSugar");
+        amtSugar_field.setAccessible(true);
+        int sugarAmt = amtSugar_field.getInt(recipe_test_obj);
+        assertEquals(1, sugarAmt);
+        try {
+            recipe_test_obj.setAmtSugar("rwji123");
+        } catch (RecipeException e) {
+            assertEquals("Units of sugar must be a positive integer", e.getMessage());
+            sugarAmt = amtSugar_field.getInt(recipe_test_obj);
+            assertEquals(1, sugarAmt);
+        }
+    }
+    @Test
+    public void testSetAmtSugar_invalid2() throws NoSuchFieldException, IllegalAccessException {
+        Field amtSugar_field = Recipe.class.getDeclaredField("amtSugar");
+        amtSugar_field.setAccessible(true);
+        int sugarAmt = amtSugar_field.getInt(recipe_test_obj);
+        assertEquals(1, sugarAmt);
+        try {
+            recipe_test_obj.setAmtSugar("-3");
+        } catch (RecipeException e) {
+            assertEquals("Units of sugar must be a positive integer", e.getMessage());
+            sugarAmt = amtSugar_field.getInt(recipe_test_obj);
+            assertEquals(1, sugarAmt);
+        }
+    }
+    //name setters
+    @Test
+    public void testSetName_valid1() throws NoSuchFieldException, IllegalAccessException {
+        Field name_field = Recipe.class.getDeclaredField("name");
+        name_field.setAccessible(true);
+        String name = (String)name_field.get(recipe_test_obj);
+        assertEquals("Hot Chocolate", name);
+
+        recipe_test_obj.setName("aWhole NE-W 名字");
+        name = (String) name_field.get(recipe_test_obj);
+        assertEquals("aWhole NE-W 名字", name);
+    }
+    @Test
+    public void testSetName_valid2() throws NoSuchFieldException, IllegalAccessException {
+        Field name_field = Recipe.class.getDeclaredField("name");
+        name_field.setAccessible(true);
+        String name = (String)name_field.get(recipe_test_obj);
+        assertEquals("Hot Chocolate", name);
+
+        recipe_test_obj.setName("");
+        name = (String) name_field.get(recipe_test_obj);
+        assertEquals("", name);
+    }
+    @Test
+    public void testSetName_invalid1() throws NoSuchFieldException, IllegalAccessException {
+        Field name_field = Recipe.class.getDeclaredField("name");
+        name_field.setAccessible(true);
+        String name = (String)name_field.get(recipe_test_obj);
+        assertEquals("Hot Chocolate", name);
+
+        recipe_test_obj.setName(null);
+        name = (String) name_field.get(recipe_test_obj);
+        assertEquals("Hot Chocolate", name);
+    }
+
+    //Price setters
+    @Test
+    public void testSetPrice_valid1() throws RecipeException, NoSuchFieldException, IllegalAccessException {
+        Field price_field = Recipe.class.getDeclaredField("price");
+        price_field.setAccessible(true);
+        int price = price_field.getInt(recipe_test_obj);
+        assertEquals(65, price);
+
+        recipe_test_obj.setPrice("45");
+        price = price_field.getInt(recipe_test_obj);
+        assertEquals(45, price);
+    }
+
+    @Test
+    public void testSetPrice_invalid1() throws NoSuchFieldException, IllegalAccessException {
+        Field price_field = Recipe.class.getDeclaredField("price");
+        price_field.setAccessible(true);
+        int price = price_field.getInt(recipe_test_obj);
+        assertEquals(65, price);
+        try {
+            recipe_test_obj.setPrice("11zzk");
+        } catch (RecipeException e) {
+            assertEquals("Price must be a positive integer", e.getMessage());
+            price = price_field.getInt(recipe_test_obj);
+            assertEquals(65, price);
+        }
+    }
+
+    @Test
+    public void testSetPrice_invalid2() throws NoSuchFieldException, IllegalAccessException {
+        Field price_field = Recipe.class.getDeclaredField("price");
+        price_field.setAccessible(true);
+        int price = price_field.getInt(recipe_test_obj);
+        assertEquals(65, price);
+        try {
+            recipe_test_obj.setPrice("-3");
+        } catch (RecipeException e) {
+            assertEquals("Price must be a positive integer", e.getMessage());
+            price = price_field.getInt(recipe_test_obj);
+            assertEquals(65, price);
+        }
+    }
+    // complete test setters
+    //start test getters
+    @Test
+    public void testGetAmtChocolate() throws NoSuchFieldException, IllegalAccessException {
+        Field chocolateAmt_field = Recipe.class.getDeclaredField("amtChocolate");
+        chocolateAmt_field.setAccessible(true);
+        int chocolateAmt = chocolateAmt_field.getInt(recipe_test_obj);
+
+        assertEquals(chocolateAmt, recipe_test_obj.getAmtChocolate());
+    }
+    @Test
+    public void testGetAmtCoffee() throws NoSuchFieldException, IllegalAccessException {
+        Field coffeeAmt_field = Recipe.class.getDeclaredField("amtCoffee");
+        coffeeAmt_field.setAccessible(true);
+        int coffeeAmt = coffeeAmt_field.getInt(recipe_test_obj);
+
+        assertEquals(coffeeAmt, recipe_test_obj.getAmtCoffee());
+    }
+    @Test
+    public void testGetAmtMilk() throws NoSuchFieldException, IllegalAccessException {
+        Field amtMilk_field = Recipe.class.getDeclaredField("amtMilk");
+        amtMilk_field.setAccessible(true);
+        int milkAmt = amtMilk_field.getInt(recipe_test_obj);
+
+        assertEquals(milkAmt, recipe_test_obj.getAmtMilk());
+    }
+    @Test
+    public void testGetAmtSugar() throws NoSuchFieldException, IllegalAccessException {
+        Field amtSugar_field = Recipe.class.getDeclaredField("amtSugar");
+        amtSugar_field.setAccessible(true);
+        int sugarAmt = amtSugar_field.getInt(recipe_test_obj);
+
+        assertEquals(sugarAmt, recipe_test_obj.getAmtSugar());
+    }
+
+    @Test
+    public void testGetName() throws NoSuchFieldException, IllegalAccessException {
+        Field name_field = Recipe.class.getDeclaredField("name");
+        name_field.setAccessible(true);
+        String name = (String)name_field.get(recipe_test_obj);
+
+        assertEquals(name, recipe_test_obj.getName());
+    }
+
+    @Test
+    public void testGetPrice() throws NoSuchFieldException, IllegalAccessException {
+        Field price_field = Recipe.class.getDeclaredField("price");
+        price_field.setAccessible(true);
+        int price = price_field.getInt(recipe_test_obj);
+        assertEquals(price, recipe_test_obj.getPrice());
+    }
 }
