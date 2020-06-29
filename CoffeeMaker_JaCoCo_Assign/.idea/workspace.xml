@@ -15,32 +15,7 @@
       <change beforePath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Golden/build/test-results/test/TEST-edu.ncsu.csc326.coffeemaker.CoffeeMakerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Golden/build/test-results/test/TEST-edu.ncsu.csc326.coffeemaker.CoffeeMakerTest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Golden/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Golden/build/test-results/test/binary/results.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Golden/src/test/java/edu/ncsu/csc326/coffeemaker/CoffeeMakerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CoffeeMaker_JUnit_Golden/src/test/java/edu/ncsu/csc326/coffeemaker/CoffeeMakerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/edu/ncsu/csc326/coffeemaker/CoffeeMakerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/edu/ncsu/csc326/coffeemaker/CoffeeMakerTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/jacoco/test.exec" beforeDir="false" afterPath="$PROJECT_DIR$/build/jacoco/test.exec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/test/html/.sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/jacoco/test/html/.sessions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/test/html/edu.ncsu.csc326.coffeemaker.exceptions/RecipeException.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/jacoco/test/html/edu.ncsu.csc326.coffeemaker.exceptions/RecipeException.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/test/html/edu.ncsu.csc326.coffeemaker.exceptions/RecipeException.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/jacoco/test/html/edu.ncsu.csc326.coffeemaker.exceptions/RecipeException.java.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/test/html/edu.ncsu.csc326.coffeemaker.exceptions/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/jacoco/test/html/edu.ncsu.csc326.coffeemaker.exceptions/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/test/html/edu.ncsu.csc326.coffeemaker.exceptions/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/jacoco/test/html/edu.ncsu.csc326.coffeemaker.exceptions/index.source.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/test/html/edu.ncsu.csc326.coffeemaker/Recipe.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/jacoco/test/html/edu.ncsu.csc326.coffeemaker/Recipe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/test/html/edu.ncsu.csc326.coffeemaker/Recipe.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/jacoco/test/html/edu.ncsu.csc326.coffeemaker/Recipe.java.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/test/html/edu.ncsu.csc326.coffeemaker/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/jacoco/test/html/edu.ncsu.csc326.coffeemaker/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/test/html/edu.ncsu.csc326.coffeemaker/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/jacoco/test/html/edu.ncsu.csc326.coffeemaker/index.source.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/jacoco/test/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/jacoco/test/html/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/edu.ncsu.csc326.coffeemaker.CoffeeMakerTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/edu.ncsu.csc326.coffeemaker.CoffeeMakerTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/edu.ncsu.csc326.coffeemaker.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/edu.ncsu.csc326.coffeemaker.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-edu.ncsu.csc326.coffeemaker.CoffeeMakerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-edu.ncsu.csc326.coffeemaker.CoffeeMakerTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/edu/ncsu/csc326/coffeemaker/CoffeeMakerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/ncsu/csc326/coffeemaker/CoffeeMakerTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -96,12 +71,18 @@
             <entry file="file://$PROJECT_DIR$/src/test/java/edu/ncsu/csc326/coffeemaker/CoffeeMakerTest.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="904">
-                  <caret line="1431" lean-forward="true" selection-start-line="1431" selection-end-line="1431" />
+                  <caret line="1484" lean-forward="true" selection-start-line="1484" selection-end-line="1484" />
                   <folding>
                     <element signature="e#0#16072#0" expanded="true" />
                     <element signature="imports" expanded="true" />
-                    <element signature="e#37032#37033#0" expanded="true" />
-                    <element signature="e#37119#37120#0" expanded="true" />
+                    <element signature="e#37327#37328#0" expanded="true" />
+                    <element signature="e#37414#37415#0" expanded="true" />
+                    <element signature="e#55056#55057#0" expanded="true" />
+                    <element signature="e#55123#55124#0" expanded="true" />
+                    <element signature="e#55864#55865#0" expanded="true" />
+                    <element signature="e#55921#55922#0" expanded="true" />
+                    <element signature="e#55970#55971#0" expanded="true" />
+                    <element signature="e#56041#56042#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -240,7 +221,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1593394252321" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1593394805351" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -296,12 +277,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1593375803338</updated>
-      <workItem from="1593375804547" duration="9600000" />
+      <workItem from="1593375804547" duration="10147000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9600000" />
+    <option name="totallyTimeSpent" value="10147000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
@@ -384,12 +365,18 @@
     <entry file="file://$PROJECT_DIR$/src/test/java/edu/ncsu/csc326/coffeemaker/CoffeeMakerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="904">
-          <caret line="1431" lean-forward="true" selection-start-line="1431" selection-end-line="1431" />
+          <caret line="1484" lean-forward="true" selection-start-line="1484" selection-end-line="1484" />
           <folding>
             <element signature="e#0#16072#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#37032#37033#0" expanded="true" />
-            <element signature="e#37119#37120#0" expanded="true" />
+            <element signature="e#37327#37328#0" expanded="true" />
+            <element signature="e#37414#37415#0" expanded="true" />
+            <element signature="e#55056#55057#0" expanded="true" />
+            <element signature="e#55123#55124#0" expanded="true" />
+            <element signature="e#55864#55865#0" expanded="true" />
+            <element signature="e#55921#55922#0" expanded="true" />
+            <element signature="e#55970#55971#0" expanded="true" />
+            <element signature="e#56041#56042#0" expanded="true" />
           </folding>
         </state>
       </provider>

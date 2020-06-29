@@ -45,6 +45,7 @@ public class CoffeeMakerTest {
     private CoffeeMaker coffeeMaker;
     private Inventory inventory_test_obj;
     private Recipe recipe_test_obj;
+    private Recipe recipe_test_obj_;
 
     // Sample recipes to use in testing.
     private Recipe recipe1;
@@ -148,6 +149,14 @@ public class CoffeeMakerTest {
         recipe_test_obj.setAmtMilk("1");
         recipe_test_obj.setAmtSugar("1");
         recipe_test_obj.setPrice("65");
+
+        recipe_test_obj_ = new Recipe();
+        recipe_test_obj_.setName("Latte");
+        recipe_test_obj_.setAmtChocolate("0");
+        recipe_test_obj_.setAmtCoffee("3");
+        recipe_test_obj_.setAmtMilk("3");
+        recipe_test_obj_.setAmtSugar("1");
+        recipe_test_obj_.setPrice("100");
 
     }
 
@@ -1427,5 +1436,49 @@ public class CoffeeMakerTest {
         price_field.setAccessible(true);
         int price = price_field.getInt(recipe_test_obj);
         assertEquals(price, recipe_test_obj.getPrice());
+    }
+    // equals tests
+    @Test
+    public void testEquals_valid1(){
+        assertTrue(recipe_test_obj.equals(recipe_test_obj));
+    }
+    @Test
+    public void testEquals_valid2() throws NoSuchFieldException, IllegalAccessException{
+        Field name_filed = Recipe.class.getDeclaredField("name");
+        name_filed.setAccessible(true);
+        name_filed.set(recipe_test_obj, null);
+        name_filed.set(recipe_test_obj_,null);
+
+        assertTrue(recipe_test_obj.equals(recipe_test_obj_));
+    }
+    @Test
+    public void testEquals_valid3() throws NoSuchFieldException, IllegalAccessException{
+        Field name_filed = Recipe.class.getDeclaredField("name");
+        name_filed.setAccessible(true);
+        name_filed.set(recipe_test_obj, "Latte");
+
+        assertTrue(recipe_test_obj.equals(recipe_test_obj_));
+    }
+    @Test
+    public void testEquals_invalid1(){
+        assertFalse(recipe_test_obj.equals(null));
+    }
+    @Test
+    public void testEquals_invalid2(){
+        assertFalse(recipe_test_obj.equals(inventory_test_obj));
+    }
+    @Test
+    public void testEquals_invalid3() throws NoSuchFieldException, IllegalAccessException{
+        Field name_filed = Recipe.class.getDeclaredField("name");
+        name_filed.setAccessible(true);
+        name_filed.set(recipe_test_obj, null);
+
+        assertFalse(recipe_test_obj.equals(recipe_test_obj_));
+    }
+
+    @Test
+    public void testEquals_invalid4()throws NoSuchFieldException,IllegalAccessException{
+
+        assertFalse(recipe_test_obj.equals(recipe_test_obj_));
     }
 }
