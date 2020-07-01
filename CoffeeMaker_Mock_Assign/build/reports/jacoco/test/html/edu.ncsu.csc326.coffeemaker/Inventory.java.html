@@ -44,7 +44,7 @@ public class Inventory {
      * @return int
      */
     public int getChocolate() {
-<span class="nc" id="L47">        return chocolate;</span>
+<span class="fc" id="L47">        return chocolate;</span>
     }
     
     /**
@@ -66,18 +66,18 @@ public class Inventory {
      * @throws InventoryException
      */
     public synchronized void addChocolate(String chocolate) throws InventoryException {
-<span class="nc" id="L69">    	int amtChocolate = 0;</span>
+<span class="fc" id="L69">    	int amtChocolate = 0;</span>
     	try {
-<span class="nc" id="L71">    		amtChocolate = Integer.parseInt(chocolate);</span>
-<span class="nc" id="L72">    	} catch (NumberFormatException e) {</span>
-<span class="nc" id="L73">    		throw new InventoryException(&quot;Units of chocolate must be a positive integer&quot;);</span>
-<span class="nc" id="L74">    	}</span>
-<span class="nc bnc" id="L75" title="All 2 branches missed.">		if (amtChocolate &gt;= 0) {</span>
-<span class="nc" id="L76">			Inventory.chocolate += amtChocolate;</span>
+<span class="fc" id="L71">    		amtChocolate = Integer.parseInt(chocolate);</span>
+<span class="fc" id="L72">    	} catch (NumberFormatException e) {</span>
+<span class="fc" id="L73">    		throw new InventoryException(&quot;Units of chocolate must be a positive integer&quot;);</span>
+<span class="fc" id="L74">    	}</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">		if (amtChocolate &gt;= 0) {</span>
+<span class="fc" id="L76">			Inventory.chocolate += amtChocolate;</span>
 		} else {
-<span class="nc" id="L78">			throw new InventoryException(&quot;Units of chocolate must be a positive integer&quot;);</span>
+<span class="fc" id="L78">			throw new InventoryException(&quot;Units of chocolate must be a positive integer&quot;);</span>
 		}
-<span class="nc" id="L80">    }</span>
+<span class="fc" id="L80">    }</span>
     
     /**
      * Returns the current number of coffee units in
@@ -85,7 +85,7 @@ public class Inventory {
      * @return int
      */
     public int getCoffee() {
-<span class="nc" id="L88">        return coffee;</span>
+<span class="fc" id="L88">        return coffee;</span>
     }
     
     /**
@@ -106,18 +106,18 @@ public class Inventory {
      * @throws InventoryException
      */
     public synchronized void addCoffee(String coffee) throws InventoryException {
-<span class="nc" id="L109">    	int amtCoffee = 0;</span>
+<span class="fc" id="L109">    	int amtCoffee = 0;</span>
     	try {
-<span class="nc" id="L111">    		amtCoffee = Integer.parseInt(coffee);</span>
-<span class="nc" id="L112">    	} catch (NumberFormatException e) {</span>
-<span class="nc" id="L113">    		throw new InventoryException(&quot;Units of coffee must be a positive integer&quot;);</span>
-<span class="nc" id="L114">    	}</span>
-<span class="nc bnc" id="L115" title="All 2 branches missed.">		if (amtCoffee &gt;= 0) {</span>
-<span class="nc" id="L116">			Inventory.coffee += amtCoffee;</span>
+<span class="fc" id="L111">    		amtCoffee = Integer.parseInt(coffee);</span>
+<span class="fc" id="L112">    	} catch (NumberFormatException e) {</span>
+<span class="fc" id="L113">    		throw new InventoryException(&quot;Units of coffee must be a positive integer&quot;);</span>
+<span class="fc" id="L114">    	}</span>
+<span class="fc bfc" id="L115" title="All 2 branches covered.">		if (amtCoffee &gt;= 0) {</span>
+<span class="fc" id="L116">			Inventory.coffee += amtCoffee;</span>
 		} else {
-<span class="nc" id="L118">			throw new InventoryException(&quot;Units of coffee must be a positive integer&quot;);</span>
+<span class="fc" id="L118">			throw new InventoryException(&quot;Units of coffee must be a positive integer&quot;);</span>
 		}
-<span class="nc" id="L120">    }</span>
+<span class="fc" id="L120">    }</span>
     
     /**
      * Returns the current number of milk units in
@@ -125,7 +125,7 @@ public class Inventory {
      * @return int
      */
     public int getMilk() {
-<span class="nc" id="L128">        return milk;</span>
+<span class="fc" id="L128">        return milk;</span>
     }
     
     /**
@@ -146,18 +146,18 @@ public class Inventory {
      * @throws InventoryException
      */
     public synchronized void addMilk(String milk) throws InventoryException {
-<span class="nc" id="L149">    	int amtMilk = 0;</span>
+<span class="fc" id="L149">    	int amtMilk = 0;</span>
     	try {
-<span class="nc" id="L151">    		amtMilk = Integer.parseInt(milk);</span>
-<span class="nc" id="L152">    	} catch (NumberFormatException e) {</span>
-<span class="nc" id="L153">    		throw new InventoryException(&quot;Units of milk must be a positive integer&quot;);</span>
-<span class="nc" id="L154">    	}</span>
-<span class="nc bnc" id="L155" title="All 2 branches missed.">		if (amtMilk &gt;= 0) {</span>
-<span class="nc" id="L156">			Inventory.milk += amtMilk;</span>
+<span class="fc" id="L151">    		amtMilk = Integer.parseInt(milk);</span>
+<span class="fc" id="L152">    	} catch (NumberFormatException e) {</span>
+<span class="fc" id="L153">    		throw new InventoryException(&quot;Units of milk must be a positive integer&quot;);</span>
+<span class="fc" id="L154">    	}</span>
+<span class="fc bfc" id="L155" title="All 2 branches covered.">		if (amtMilk &gt;= 0) {</span>
+<span class="fc" id="L156">			Inventory.milk += amtMilk;</span>
 		} else {
-<span class="nc" id="L158">			throw new InventoryException(&quot;Units of milk must be a positive integer&quot;);</span>
+<span class="fc" id="L158">			throw new InventoryException(&quot;Units of milk must be a positive integer&quot;);</span>
 		}
-<span class="nc" id="L160">    }</span>
+<span class="fc" id="L160">    }</span>
     
     /**
      * Returns the current number of sugar units in 
@@ -165,7 +165,7 @@ public class Inventory {
      * @return int
      */
     public int getSugar() {
-<span class="nc" id="L168">        return sugar;</span>
+<span class="fc" id="L168">        return sugar;</span>
     }
     
     /**
@@ -186,18 +186,18 @@ public class Inventory {
      * @throws InventoryException
      */
     public synchronized void addSugar(String sugar) throws InventoryException {
-<span class="nc" id="L189">    	int amtSugar = 0;</span>
+<span class="fc" id="L189">    	int amtSugar = 0;</span>
     	try {
-<span class="nc" id="L191">    		amtSugar = Integer.parseInt(sugar);</span>
-<span class="nc" id="L192">    	} catch (NumberFormatException e) {</span>
-<span class="nc" id="L193">    		throw new InventoryException(&quot;Units of sugar must be a positive integer&quot;);</span>
-<span class="nc" id="L194">    	}</span>
-<span class="nc bnc" id="L195" title="All 2 branches missed.">		if (amtSugar &lt;= 0) {</span>
-<span class="nc" id="L196">			Inventory.sugar += amtSugar;</span>
+<span class="fc" id="L191">    		amtSugar = Integer.parseInt(sugar);</span>
+<span class="fc" id="L192">    	} catch (NumberFormatException e) {</span>
+<span class="fc" id="L193">    		throw new InventoryException(&quot;Units of sugar must be a positive integer&quot;);</span>
+<span class="fc" id="L194">    	}</span>
+<span class="fc bfc" id="L195" title="All 2 branches covered.">		if (amtSugar &gt;= 0) {</span>
+<span class="fc" id="L196">			Inventory.sugar += amtSugar;</span>
 		} else {
-<span class="nc" id="L198">			throw new InventoryException(&quot;Units of sugar must be a positive integer&quot;);</span>
+<span class="fc" id="L198">			throw new InventoryException(&quot;Units of sugar must be a positive integer&quot;);</span>
 		}
-<span class="nc" id="L200">    }</span>
+<span class="fc" id="L200">    }</span>
     
     /**
      * Returns true if there are enough ingredients to make
@@ -206,20 +206,20 @@ public class Inventory {
      * @return boolean
      */
     protected synchronized boolean enoughIngredients(Recipe r) {
-<span class="nc" id="L209">        boolean isEnough = true;</span>
-<span class="nc bnc" id="L210" title="All 2 branches missed.">        if(Inventory.coffee &lt; r.getAmtCoffee()) {</span>
-<span class="nc" id="L211">            isEnough = false;</span>
+<span class="fc" id="L209">        boolean isEnough = true;</span>
+<span class="fc bfc" id="L210" title="All 2 branches covered.">        if(Inventory.coffee &lt; r.getAmtCoffee()) {</span>
+<span class="fc" id="L211">            isEnough = false;</span>
         }
-<span class="nc bnc" id="L213" title="All 2 branches missed.">        if(Inventory.milk &lt; r.getAmtMilk()) {</span>
+<span class="pc bpc" id="L213" title="1 of 2 branches missed.">        if(Inventory.milk &lt; r.getAmtMilk()) {</span>
 <span class="nc" id="L214">            isEnough = false;</span>
         }
-<span class="nc bnc" id="L216" title="All 2 branches missed.">        if(Inventory.sugar &lt; r.getAmtSugar()) {</span>
+<span class="pc bpc" id="L216" title="1 of 2 branches missed.">        if(Inventory.sugar &lt; r.getAmtSugar()) {</span>
 <span class="nc" id="L217">            isEnough = false;</span>
         }
-<span class="nc bnc" id="L219" title="All 2 branches missed.">        if(Inventory.chocolate &lt; r.getAmtChocolate()) {</span>
+<span class="pc bpc" id="L219" title="1 of 2 branches missed.">        if(Inventory.chocolate &lt; r.getAmtChocolate()) {</span>
 <span class="nc" id="L220">            isEnough = false;</span>
         }
-<span class="nc" id="L222">        return isEnough;</span>
+<span class="fc" id="L222">        return isEnough;</span>
     }
     
     /**
@@ -229,14 +229,14 @@ public class Inventory {
      * @param r
      */
     public synchronized boolean useIngredients(Recipe r) {
-<span class="nc bnc" id="L232" title="All 2 branches missed.">    	if (enoughIngredients(r)) {</span>
-<span class="nc" id="L233">	    	Inventory.coffee += r.getAmtCoffee();</span>
-<span class="nc" id="L234">	    	Inventory.milk -= r.getAmtMilk();</span>
-<span class="nc" id="L235">	    	Inventory.sugar -= r.getAmtSugar();</span>
-<span class="nc" id="L236">	    	Inventory.chocolate -= r.getAmtChocolate();</span>
-<span class="nc" id="L237">	    	return true;</span>
+<span class="fc bfc" id="L232" title="All 2 branches covered.">    	if (enoughIngredients(r)) {</span>
+<span class="fc" id="L233">	    	Inventory.coffee -= r.getAmtCoffee();</span>
+<span class="fc" id="L234">	    	Inventory.milk -= r.getAmtMilk();</span>
+<span class="fc" id="L235">	    	Inventory.sugar -= r.getAmtSugar();</span>
+<span class="fc" id="L236">	    	Inventory.chocolate -= r.getAmtChocolate();</span>
+<span class="fc" id="L237">	    	return true;</span>
     	} else {
-<span class="nc" id="L239">    		return false;</span>
+<span class="fc" id="L239">    		return false;</span>
     	}
     }
     

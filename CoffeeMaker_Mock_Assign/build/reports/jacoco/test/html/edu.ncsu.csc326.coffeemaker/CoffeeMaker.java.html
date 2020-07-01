@@ -75,11 +75,11 @@ public class CoffeeMaker {
      * @return boolean
      */
     public synchronized void addInventory(String amtCoffee, String amtMilk, String amtSugar, String amtChocolate) throws InventoryException {
-<span class="nc" id="L78">	    inventory.addCoffee(amtCoffee);</span>
-<span class="nc" id="L79">	    inventory.addMilk(amtMilk);</span>
-<span class="nc" id="L80">	    inventory.addSugar(amtSugar);</span>
-<span class="nc" id="L81">	    inventory.addChocolate(amtChocolate);</span>
-<span class="nc" id="L82">    }</span>
+<span class="fc" id="L78">	    inventory.addCoffee(amtCoffee);</span>
+<span class="fc" id="L79">	    inventory.addMilk(amtMilk);</span>
+<span class="fc" id="L80">	    inventory.addSugar(amtSugar);</span>
+<span class="fc" id="L81">	    inventory.addChocolate(amtChocolate);</span>
+<span class="fc" id="L82">    }</span>
     
     /**
      * Returns the inventory of the coffee maker
@@ -97,21 +97,24 @@ public class CoffeeMaker {
      * @return int
      */
     public synchronized int makeCoffee(int recipeToPurchase, int amtPaid) {
-<span class="nc" id="L100">        int change = 0;</span>
-        
-<span class="nc bnc" id="L102" title="All 2 branches missed.">        if (getRecipes()[recipeToPurchase] == null) {</span>
-<span class="nc" id="L103">        	change = amtPaid;</span>
-<span class="nc bnc" id="L104" title="All 2 branches missed.">        } else if (getRecipes()[recipeToPurchase].getPrice() &lt;= amtPaid) {</span>
-<span class="nc bnc" id="L105" title="All 2 branches missed.">        	if (inventory.useIngredients(getRecipes()[recipeToPurchase])) {</span>
-<span class="nc" id="L106">        		change = amtPaid - getRecipes()[recipeToPurchase].getPrice();</span>
-        	} else {
-<span class="nc" id="L108">        		change = amtPaid;</span>
-        	}
-        } else {
-<span class="nc" id="L111">        	change = amtPaid;</span>
-        }
-        
-<span class="nc" id="L114">        return change;</span>
+<span class="fc" id="L100">        int change = 0;</span>
+
+<span class="fc bfc" id="L102" title="All 2 branches covered.">		if (recipeToPurchase &lt; 0 ||</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">				recipeToPurchase &gt;= getRecipes().length ||</span>
+<span class="pc bpc" id="L104" title="1 of 2 branches missed.">				getRecipes()[recipeToPurchase] == null) {</span>
+<span class="fc" id="L105">			change = amtPaid;</span>
+		}
+<span class="fc bfc" id="L107" title="All 2 branches covered.">		else if (getRecipes()[recipeToPurchase].getPrice() &lt;= amtPaid) {</span>
+<span class="fc bfc" id="L108" title="All 2 branches covered.">			if (inventory.useIngredients(getRecipes()[recipeToPurchase])) {</span>
+<span class="fc" id="L109">				change = amtPaid - getRecipes()[recipeToPurchase].getPrice();</span>
+			} else {
+<span class="fc" id="L111">				change = amtPaid;</span>
+			}
+		} else {
+<span class="fc" id="L114">			change = amtPaid;</span>
+		}
+
+<span class="fc" id="L117">		return change;</span>
     }
 
 	/**
@@ -119,7 +122,7 @@ public class CoffeeMaker {
 	 * @return Recipe []
 	 */
 	public synchronized Recipe[] getRecipes() {
-<span class="nc" id="L122">		return recipeBook.getRecipes();</span>
+<span class="fc" id="L125">		return recipeBook.getRecipes();</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

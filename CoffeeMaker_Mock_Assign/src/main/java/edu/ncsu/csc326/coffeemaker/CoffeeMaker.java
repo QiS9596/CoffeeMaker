@@ -98,20 +98,23 @@ public class CoffeeMaker {
      */
     public synchronized int makeCoffee(int recipeToPurchase, int amtPaid) {
         int change = 0;
-        
-        if (getRecipes()[recipeToPurchase] == null) {
-        	change = amtPaid;
-        } else if (getRecipes()[recipeToPurchase].getPrice() <= amtPaid) {
-        	if (inventory.useIngredients(getRecipes()[recipeToPurchase])) {
-        		change = amtPaid - getRecipes()[recipeToPurchase].getPrice();
-        	} else {
-        		change = amtPaid;
-        	}
-        } else {
-        	change = amtPaid;
-        }
-        
-        return change;
+
+		if (recipeToPurchase < 0 ||
+				recipeToPurchase >= getRecipes().length ||
+				getRecipes()[recipeToPurchase] == null) {
+			change = amtPaid;
+		}
+		else if (getRecipes()[recipeToPurchase].getPrice() <= amtPaid) {
+			if (inventory.useIngredients(getRecipes()[recipeToPurchase])) {
+				change = amtPaid - getRecipes()[recipeToPurchase].getPrice();
+			} else {
+				change = amtPaid;
+			}
+		} else {
+			change = amtPaid;
+		}
+
+		return change;
     }
 
 	/**
